@@ -437,6 +437,14 @@ func (t *timerActiveTaskExecutor) executeActivityRetryTimerTask(
 
 	release(nil) // release earlier as we don't need the lock anymore
 
+	if domainID == "e7f5f8f4-1319-4869-aa67-02bcc964f4e9" && scheduleToStartTimeout > 1000000 {
+		t.logger.Warn(
+			"Adding activity task",
+			tag.WorkflowID(execution.GetWorkflowId()),
+			tag.WorkflowRunID(execution.GetRunId()),
+			tag.ScheduleAttempt(activityInfo.ScheduleID))
+	}
+
 	return t.shard.GetService().GetMatchingClient().AddActivityTask(nil, &m.AddActivityTaskRequest{
 		DomainUUID:                    common.StringPtr(targetDomainID),
 		SourceDomainUUID:              common.StringPtr(domainID),

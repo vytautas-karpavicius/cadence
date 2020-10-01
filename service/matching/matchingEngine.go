@@ -268,6 +268,14 @@ func (e *matchingEngineImpl) AddActivityTask(
 			request.Execution.WorkflowId,
 			request.Execution.RunId))
 
+	if domainID == "e7f5f8f4-1319-4869-aa67-02bcc964f4e9" && request.GetScheduleToStartTimeoutSeconds() > 1000000 {
+		e.logger.Warn(
+			"Adding activity task",
+			tag.WorkflowID(request.Execution.GetWorkflowId()),
+			tag.WorkflowRunID(request.Execution.GetRunId()),
+			tag.ScheduleAttempt(request.GetScheduleId()))
+	}
+
 	taskList, err := newTaskListID(domainID, taskListName, persistence.TaskListTypeActivity)
 	if err != nil {
 		return false, err
@@ -447,6 +455,18 @@ pollLoop:
 			continue pollLoop
 		}
 		task.finish(nil)
+
+		if domainID == "e7f5f8f4-1319-4869-aa67-02bcc964f4e9" {
+			if resp.GetScheduledEvent() != nil && resp.GetScheduledEvent().GetActivityTaskScheduledEventAttributes() != nil {
+				attribute := resp.GetScheduledEvent().GetActivityTaskScheduledEventAttributes()
+				if attribute.GetScheduleToStartTimeoutSeconds() > 1000000 {
+					e.logger.Warn(
+						"Poll the activity task with large timeout",
+						tag.WorkflowRunID(attribute.GetActivityId()),
+					)
+				}
+			}
+		}
 		return e.createPollForActivityTaskResponse(task, resp, hCtx.scope), nil
 	}
 }

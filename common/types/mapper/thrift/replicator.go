@@ -728,6 +728,30 @@ func ToSyncShardStatusTaskAttributes(t *replicator.SyncShardStatusTaskAttributes
 	}
 }
 
+// FromReplicationTokenArray converts internal ReplicationToken type array to thrift
+func FromReplicationTokenArray(t []*types.ReplicationToken) []*replicator.ReplicationToken {
+	if t == nil {
+		return nil
+	}
+	v := make([]*replicator.ReplicationToken, len(t))
+	for i := range t {
+		v[i] = FromReplicationToken(t[i])
+	}
+	return v
+}
+
+// ToReplicationTokenArray converts thrift ReplicationToken type array to internal
+func ToReplicationTokenArray(t []*replicator.ReplicationToken) []*types.ReplicationToken {
+	if t == nil {
+		return nil
+	}
+	v := make([]*types.ReplicationToken, len(t))
+	for i := range t {
+		v[i] = ToReplicationToken(t[i])
+	}
+	return v
+}
+
 // FromFailoverMarkerAttributesArray converts internal FailoverMarkerAttributes type array to thrift
 func FromFailoverMarkerAttributesArray(t []*types.FailoverMarkerAttributes) []*replicator.FailoverMarkerAttributes {
 	if t == nil {
@@ -796,30 +820,6 @@ func ToReplicationTaskArray(t []*replicator.ReplicationTask) []*types.Replicatio
 	v := make([]*types.ReplicationTask, len(t))
 	for i := range t {
 		v[i] = ToReplicationTask(t[i])
-	}
-	return v
-}
-
-// FromReplicationTokenArray converts internal ReplicationToken type array to thrift
-func FromReplicationTokenArray(t []*types.ReplicationToken) []*replicator.ReplicationToken {
-	if t == nil {
-		return nil
-	}
-	v := make([]*replicator.ReplicationToken, len(t))
-	for i := range t {
-		v[i] = FromReplicationToken(t[i])
-	}
-	return v
-}
-
-// ToReplicationTokenArray converts thrift ReplicationToken type array to internal
-func ToReplicationTokenArray(t []*replicator.ReplicationToken) []*types.ReplicationToken {
-	if t == nil {
-		return nil
-	}
-	v := make([]*types.ReplicationToken, len(t))
-	for i := range t {
-		v[i] = ToReplicationToken(t[i])
 	}
 	return v
 }

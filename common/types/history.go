@@ -64,14 +64,14 @@ func (v *DescribeMutableStateResponse) GetMutableStateInDatabase() (o string) {
 	return
 }
 
-// DescribeWorkflowExecutionRequest is an internal type (TBD...)
-type DescribeWorkflowExecutionRequest struct {
+// HistoryDescribeWorkflowExecutionRequest is an internal type (TBD...)
+type HistoryDescribeWorkflowExecutionRequest struct {
 	DomainUUID *string
 	Request    *DescribeWorkflowExecutionRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *DescribeWorkflowExecutionRequest) GetDomainUUID() (o string) {
+func (v *HistoryDescribeWorkflowExecutionRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -79,7 +79,7 @@ func (v *DescribeWorkflowExecutionRequest) GetDomainUUID() (o string) {
 }
 
 // GetRequest is an internal getter (TBD...)
-func (v *DescribeWorkflowExecutionRequest) GetRequest() (o *DescribeWorkflowExecutionRequest) {
+func (v *HistoryDescribeWorkflowExecutionRequest) GetRequest() (o *DescribeWorkflowExecutionRequest) {
 	if v != nil && v.Request != nil {
 		return v.Request
 	}
@@ -581,11 +581,11 @@ func (v *HistoryService_DescribeQueue_Result) GetAccessDeniedError() (o *AccessD
 
 // HistoryService_DescribeWorkflowExecution_Args is an internal type (TBD...)
 type HistoryService_DescribeWorkflowExecution_Args struct {
-	DescribeRequest *DescribeWorkflowExecutionRequest
+	DescribeRequest *HistoryDescribeWorkflowExecutionRequest
 }
 
 // GetDescribeRequest is an internal getter (TBD...)
-func (v *HistoryService_DescribeWorkflowExecution_Args) GetDescribeRequest() (o *DescribeWorkflowExecutionRequest) {
+func (v *HistoryService_DescribeWorkflowExecution_Args) GetDescribeRequest() (o *HistoryDescribeWorkflowExecutionRequest) {
 	if v != nil && v.DescribeRequest != nil {
 		return v.DescribeRequest
 	}
@@ -1149,11 +1149,11 @@ func (v *HistoryService_PurgeDLQMessages_Result) GetShardOwnershipLostError() (o
 
 // HistoryService_QueryWorkflow_Args is an internal type (TBD...)
 type HistoryService_QueryWorkflow_Args struct {
-	QueryRequest *QueryWorkflowRequest
+	QueryRequest *HistoryQueryWorkflowRequest
 }
 
 // GetQueryRequest is an internal getter (TBD...)
-func (v *HistoryService_QueryWorkflow_Args) GetQueryRequest() (o *QueryWorkflowRequest) {
+func (v *HistoryService_QueryWorkflow_Args) GetQueryRequest() (o *HistoryQueryWorkflowRequest) {
 	if v != nil && v.QueryRequest != nil {
 		return v.QueryRequest
 	}
@@ -1162,7 +1162,7 @@ func (v *HistoryService_QueryWorkflow_Args) GetQueryRequest() (o *QueryWorkflowR
 
 // HistoryService_QueryWorkflow_Result is an internal type (TBD...)
 type HistoryService_QueryWorkflow_Result struct {
-	Success                        *QueryWorkflowResponse
+	Success                        *HistoryQueryWorkflowResponse
 	BadRequestError                *BadRequestError
 	InternalServiceError           *InternalServiceError
 	EntityNotExistError            *EntityNotExistsError
@@ -1173,7 +1173,7 @@ type HistoryService_QueryWorkflow_Result struct {
 }
 
 // GetSuccess is an internal getter (TBD...)
-func (v *HistoryService_QueryWorkflow_Result) GetSuccess() (o *QueryWorkflowResponse) {
+func (v *HistoryService_QueryWorkflow_Result) GetSuccess() (o *HistoryQueryWorkflowResponse) {
 	if v != nil && v.Success != nil {
 		return v.Success
 	}
@@ -1309,11 +1309,11 @@ func (v *HistoryService_ReadDLQMessages_Result) GetShardOwnershipLostError() (o 
 
 // HistoryService_ReapplyEvents_Args is an internal type (TBD...)
 type HistoryService_ReapplyEvents_Args struct {
-	ReapplyEventsRequest *ReapplyEventsRequest
+	ReapplyEventsRequest *HistoryReapplyEventsRequest
 }
 
 // GetReapplyEventsRequest is an internal getter (TBD...)
-func (v *HistoryService_ReapplyEvents_Args) GetReapplyEventsRequest() (o *ReapplyEventsRequest) {
+func (v *HistoryService_ReapplyEvents_Args) GetReapplyEventsRequest() (o *HistoryReapplyEventsRequest) {
 	if v != nil && v.ReapplyEventsRequest != nil {
 		return v.ReapplyEventsRequest
 	}
@@ -1389,11 +1389,11 @@ func (v *HistoryService_ReapplyEvents_Result) GetEntityNotExistError() (o *Entit
 
 // HistoryService_RecordActivityTaskHeartbeat_Args is an internal type (TBD...)
 type HistoryService_RecordActivityTaskHeartbeat_Args struct {
-	HeartbeatRequest *RecordActivityTaskHeartbeatRequest
+	HeartbeatRequest *HistoryRecordActivityTaskHeartbeatRequest
 }
 
 // GetHeartbeatRequest is an internal getter (TBD...)
-func (v *HistoryService_RecordActivityTaskHeartbeat_Args) GetHeartbeatRequest() (o *RecordActivityTaskHeartbeatRequest) {
+func (v *HistoryService_RecordActivityTaskHeartbeat_Args) GetHeartbeatRequest() (o *HistoryRecordActivityTaskHeartbeatRequest) {
 	if v != nil && v.HeartbeatRequest != nil {
 		return v.HeartbeatRequest
 	}
@@ -1754,11 +1754,11 @@ func (v *HistoryService_RecordDecisionTaskStarted_Result) GetServiceBusyError() 
 
 // HistoryService_RefreshWorkflowTasks_Args is an internal type (TBD...)
 type HistoryService_RefreshWorkflowTasks_Args struct {
-	Request *RefreshWorkflowTasksRequest
+	Request *HistoryRefreshWorkflowTasksRequest
 }
 
 // GetRequest is an internal getter (TBD...)
-func (v *HistoryService_RefreshWorkflowTasks_Args) GetRequest() (o *RefreshWorkflowTasksRequest) {
+func (v *HistoryService_RefreshWorkflowTasks_Args) GetRequest() (o *HistoryRefreshWorkflowTasksRequest) {
 	if v != nil && v.Request != nil {
 		return v.Request
 	}
@@ -2029,11 +2029,11 @@ func (v *HistoryService_ReplicateEventsV2_Result) GetServiceBusyError() (o *Serv
 
 // HistoryService_RequestCancelWorkflowExecution_Args is an internal type (TBD...)
 type HistoryService_RequestCancelWorkflowExecution_Args struct {
-	CancelRequest *RequestCancelWorkflowExecutionRequest
+	CancelRequest *HistoryRequestCancelWorkflowExecutionRequest
 }
 
 // GetCancelRequest is an internal getter (TBD...)
-func (v *HistoryService_RequestCancelWorkflowExecution_Args) GetCancelRequest() (o *RequestCancelWorkflowExecutionRequest) {
+func (v *HistoryService_RequestCancelWorkflowExecution_Args) GetCancelRequest() (o *HistoryRequestCancelWorkflowExecutionRequest) {
 	if v != nil && v.CancelRequest != nil {
 		return v.CancelRequest
 	}
@@ -2162,11 +2162,11 @@ func (v *HistoryService_ResetQueue_Result) GetAccessDeniedError() (o *AccessDeni
 
 // HistoryService_ResetStickyTaskList_Args is an internal type (TBD...)
 type HistoryService_ResetStickyTaskList_Args struct {
-	ResetRequest *ResetStickyTaskListRequest
+	ResetRequest *HistoryResetStickyTaskListRequest
 }
 
 // GetResetRequest is an internal getter (TBD...)
-func (v *HistoryService_ResetStickyTaskList_Args) GetResetRequest() (o *ResetStickyTaskListRequest) {
+func (v *HistoryService_ResetStickyTaskList_Args) GetResetRequest() (o *HistoryResetStickyTaskListRequest) {
 	if v != nil && v.ResetRequest != nil {
 		return v.ResetRequest
 	}
@@ -2175,7 +2175,7 @@ func (v *HistoryService_ResetStickyTaskList_Args) GetResetRequest() (o *ResetSti
 
 // HistoryService_ResetStickyTaskList_Result is an internal type (TBD...)
 type HistoryService_ResetStickyTaskList_Result struct {
-	Success                 *ResetStickyTaskListResponse
+	Success                 *HistoryResetStickyTaskListResponse
 	BadRequestError         *BadRequestError
 	InternalServiceError    *InternalServiceError
 	EntityNotExistError     *EntityNotExistsError
@@ -2185,7 +2185,7 @@ type HistoryService_ResetStickyTaskList_Result struct {
 }
 
 // GetSuccess is an internal getter (TBD...)
-func (v *HistoryService_ResetStickyTaskList_Result) GetSuccess() (o *ResetStickyTaskListResponse) {
+func (v *HistoryService_ResetStickyTaskList_Result) GetSuccess() (o *HistoryResetStickyTaskListResponse) {
 	if v != nil && v.Success != nil {
 		return v.Success
 	}
@@ -2242,11 +2242,11 @@ func (v *HistoryService_ResetStickyTaskList_Result) GetServiceBusyError() (o *Se
 
 // HistoryService_ResetWorkflowExecution_Args is an internal type (TBD...)
 type HistoryService_ResetWorkflowExecution_Args struct {
-	ResetRequest *ResetWorkflowExecutionRequest
+	ResetRequest *HistoryResetWorkflowExecutionRequest
 }
 
 // GetResetRequest is an internal getter (TBD...)
-func (v *HistoryService_ResetWorkflowExecution_Args) GetResetRequest() (o *ResetWorkflowExecutionRequest) {
+func (v *HistoryService_ResetWorkflowExecution_Args) GetResetRequest() (o *HistoryResetWorkflowExecutionRequest) {
 	if v != nil && v.ResetRequest != nil {
 		return v.ResetRequest
 	}
@@ -2331,11 +2331,11 @@ func (v *HistoryService_ResetWorkflowExecution_Result) GetServiceBusyError() (o 
 
 // HistoryService_RespondActivityTaskCanceled_Args is an internal type (TBD...)
 type HistoryService_RespondActivityTaskCanceled_Args struct {
-	CanceledRequest *RespondActivityTaskCanceledRequest
+	CanceledRequest *HistoryRespondActivityTaskCanceledRequest
 }
 
 // GetCanceledRequest is an internal getter (TBD...)
-func (v *HistoryService_RespondActivityTaskCanceled_Args) GetCanceledRequest() (o *RespondActivityTaskCanceledRequest) {
+func (v *HistoryService_RespondActivityTaskCanceled_Args) GetCanceledRequest() (o *HistoryRespondActivityTaskCanceledRequest) {
 	if v != nil && v.CanceledRequest != nil {
 		return v.CanceledRequest
 	}
@@ -2411,11 +2411,11 @@ func (v *HistoryService_RespondActivityTaskCanceled_Result) GetServiceBusyError(
 
 // HistoryService_RespondActivityTaskCompleted_Args is an internal type (TBD...)
 type HistoryService_RespondActivityTaskCompleted_Args struct {
-	CompleteRequest *RespondActivityTaskCompletedRequest
+	CompleteRequest *HistoryRespondActivityTaskCompletedRequest
 }
 
 // GetCompleteRequest is an internal getter (TBD...)
-func (v *HistoryService_RespondActivityTaskCompleted_Args) GetCompleteRequest() (o *RespondActivityTaskCompletedRequest) {
+func (v *HistoryService_RespondActivityTaskCompleted_Args) GetCompleteRequest() (o *HistoryRespondActivityTaskCompletedRequest) {
 	if v != nil && v.CompleteRequest != nil {
 		return v.CompleteRequest
 	}
@@ -2491,11 +2491,11 @@ func (v *HistoryService_RespondActivityTaskCompleted_Result) GetServiceBusyError
 
 // HistoryService_RespondActivityTaskFailed_Args is an internal type (TBD...)
 type HistoryService_RespondActivityTaskFailed_Args struct {
-	FailRequest *RespondActivityTaskFailedRequest
+	FailRequest *HistoryRespondActivityTaskFailedRequest
 }
 
 // GetFailRequest is an internal getter (TBD...)
-func (v *HistoryService_RespondActivityTaskFailed_Args) GetFailRequest() (o *RespondActivityTaskFailedRequest) {
+func (v *HistoryService_RespondActivityTaskFailed_Args) GetFailRequest() (o *HistoryRespondActivityTaskFailedRequest) {
 	if v != nil && v.FailRequest != nil {
 		return v.FailRequest
 	}
@@ -2571,11 +2571,11 @@ func (v *HistoryService_RespondActivityTaskFailed_Result) GetServiceBusyError() 
 
 // HistoryService_RespondDecisionTaskCompleted_Args is an internal type (TBD...)
 type HistoryService_RespondDecisionTaskCompleted_Args struct {
-	CompleteRequest *RespondDecisionTaskCompletedRequest
+	CompleteRequest *HistoryRespondDecisionTaskCompletedRequest
 }
 
 // GetCompleteRequest is an internal getter (TBD...)
-func (v *HistoryService_RespondDecisionTaskCompleted_Args) GetCompleteRequest() (o *RespondDecisionTaskCompletedRequest) {
+func (v *HistoryService_RespondDecisionTaskCompleted_Args) GetCompleteRequest() (o *HistoryRespondDecisionTaskCompletedRequest) {
 	if v != nil && v.CompleteRequest != nil {
 		return v.CompleteRequest
 	}
@@ -2584,7 +2584,7 @@ func (v *HistoryService_RespondDecisionTaskCompleted_Args) GetCompleteRequest() 
 
 // HistoryService_RespondDecisionTaskCompleted_Result is an internal type (TBD...)
 type HistoryService_RespondDecisionTaskCompleted_Result struct {
-	Success                 *RespondDecisionTaskCompletedResponse
+	Success                 *HistoryRespondDecisionTaskCompletedResponse
 	BadRequestError         *BadRequestError
 	InternalServiceError    *InternalServiceError
 	EntityNotExistError     *EntityNotExistsError
@@ -2595,7 +2595,7 @@ type HistoryService_RespondDecisionTaskCompleted_Result struct {
 }
 
 // GetSuccess is an internal getter (TBD...)
-func (v *HistoryService_RespondDecisionTaskCompleted_Result) GetSuccess() (o *RespondDecisionTaskCompletedResponse) {
+func (v *HistoryService_RespondDecisionTaskCompleted_Result) GetSuccess() (o *HistoryRespondDecisionTaskCompletedResponse) {
 	if v != nil && v.Success != nil {
 		return v.Success
 	}
@@ -2660,11 +2660,11 @@ func (v *HistoryService_RespondDecisionTaskCompleted_Result) GetServiceBusyError
 
 // HistoryService_RespondDecisionTaskFailed_Args is an internal type (TBD...)
 type HistoryService_RespondDecisionTaskFailed_Args struct {
-	FailedRequest *RespondDecisionTaskFailedRequest
+	FailedRequest *HistoryRespondDecisionTaskFailedRequest
 }
 
 // GetFailedRequest is an internal getter (TBD...)
-func (v *HistoryService_RespondDecisionTaskFailed_Args) GetFailedRequest() (o *RespondDecisionTaskFailedRequest) {
+func (v *HistoryService_RespondDecisionTaskFailed_Args) GetFailedRequest() (o *HistoryRespondDecisionTaskFailedRequest) {
 	if v != nil && v.FailedRequest != nil {
 		return v.FailedRequest
 	}
@@ -2820,11 +2820,11 @@ func (v *HistoryService_ScheduleDecisionTask_Result) GetServiceBusyError() (o *S
 
 // HistoryService_SignalWithStartWorkflowExecution_Args is an internal type (TBD...)
 type HistoryService_SignalWithStartWorkflowExecution_Args struct {
-	SignalWithStartRequest *SignalWithStartWorkflowExecutionRequest
+	SignalWithStartRequest *HistorySignalWithStartWorkflowExecutionRequest
 }
 
 // GetSignalWithStartRequest is an internal getter (TBD...)
-func (v *HistoryService_SignalWithStartWorkflowExecution_Args) GetSignalWithStartRequest() (o *SignalWithStartWorkflowExecutionRequest) {
+func (v *HistoryService_SignalWithStartWorkflowExecution_Args) GetSignalWithStartRequest() (o *HistorySignalWithStartWorkflowExecutionRequest) {
 	if v != nil && v.SignalWithStartRequest != nil {
 		return v.SignalWithStartRequest
 	}
@@ -2909,11 +2909,11 @@ func (v *HistoryService_SignalWithStartWorkflowExecution_Result) GetWorkflowAlre
 
 // HistoryService_SignalWorkflowExecution_Args is an internal type (TBD...)
 type HistoryService_SignalWorkflowExecution_Args struct {
-	SignalRequest *SignalWorkflowExecutionRequest
+	SignalRequest *HistorySignalWorkflowExecutionRequest
 }
 
 // GetSignalRequest is an internal getter (TBD...)
-func (v *HistoryService_SignalWorkflowExecution_Args) GetSignalRequest() (o *SignalWorkflowExecutionRequest) {
+func (v *HistoryService_SignalWorkflowExecution_Args) GetSignalRequest() (o *HistorySignalWorkflowExecutionRequest) {
 	if v != nil && v.SignalRequest != nil {
 		return v.SignalRequest
 	}
@@ -2989,11 +2989,11 @@ func (v *HistoryService_SignalWorkflowExecution_Result) GetLimitExceededError() 
 
 // HistoryService_StartWorkflowExecution_Args is an internal type (TBD...)
 type HistoryService_StartWorkflowExecution_Args struct {
-	StartRequest *StartWorkflowExecutionRequest
+	StartRequest *HistoryStartWorkflowExecutionRequest
 }
 
 // GetStartRequest is an internal getter (TBD...)
-func (v *HistoryService_StartWorkflowExecution_Args) GetStartRequest() (o *StartWorkflowExecutionRequest) {
+func (v *HistoryService_StartWorkflowExecution_Args) GetStartRequest() (o *HistoryStartWorkflowExecutionRequest) {
 	if v != nil && v.StartRequest != nil {
 		return v.StartRequest
 	}
@@ -3211,11 +3211,11 @@ func (v *HistoryService_SyncShardStatus_Result) GetServiceBusyError() (o *Servic
 
 // HistoryService_TerminateWorkflowExecution_Args is an internal type (TBD...)
 type HistoryService_TerminateWorkflowExecution_Args struct {
-	TerminateRequest *TerminateWorkflowExecutionRequest
+	TerminateRequest *HistoryTerminateWorkflowExecutionRequest
 }
 
 // GetTerminateRequest is an internal getter (TBD...)
-func (v *HistoryService_TerminateWorkflowExecution_Args) GetTerminateRequest() (o *TerminateWorkflowExecutionRequest) {
+func (v *HistoryService_TerminateWorkflowExecution_Args) GetTerminateRequest() (o *HistoryTerminateWorkflowExecutionRequest) {
 	if v != nil && v.TerminateRequest != nil {
 		return v.TerminateRequest
 	}
@@ -3574,14 +3574,14 @@ func (v *ProcessingQueueStates) GetStatesByCluster() (o map[string][]*Processing
 	return
 }
 
-// QueryWorkflowRequest is an internal type (TBD...)
-type QueryWorkflowRequest struct {
+// HistoryQueryWorkflowRequest is an internal type (TBD...)
+type HistoryQueryWorkflowRequest struct {
 	DomainUUID *string
 	Request    *QueryWorkflowRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *QueryWorkflowRequest) GetDomainUUID() (o string) {
+func (v *HistoryQueryWorkflowRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -3589,34 +3589,34 @@ func (v *QueryWorkflowRequest) GetDomainUUID() (o string) {
 }
 
 // GetRequest is an internal getter (TBD...)
-func (v *QueryWorkflowRequest) GetRequest() (o *QueryWorkflowRequest) {
+func (v *HistoryQueryWorkflowRequest) GetRequest() (o *QueryWorkflowRequest) {
 	if v != nil && v.Request != nil {
 		return v.Request
 	}
 	return
 }
 
-// QueryWorkflowResponse is an internal type (TBD...)
-type QueryWorkflowResponse struct {
+// HistoryQueryWorkflowResponse is an internal type (TBD...)
+type HistoryQueryWorkflowResponse struct {
 	Response *QueryWorkflowResponse
 }
 
 // GetResponse is an internal getter (TBD...)
-func (v *QueryWorkflowResponse) GetResponse() (o *QueryWorkflowResponse) {
+func (v *HistoryQueryWorkflowResponse) GetResponse() (o *QueryWorkflowResponse) {
 	if v != nil && v.Response != nil {
 		return v.Response
 	}
 	return
 }
 
-// ReapplyEventsRequest is an internal type (TBD...)
-type ReapplyEventsRequest struct {
+// HistoryReapplyEventsRequest is an internal type (TBD...)
+type HistoryReapplyEventsRequest struct {
 	DomainUUID *string
 	Request    *ReapplyEventsRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *ReapplyEventsRequest) GetDomainUUID() (o string) {
+func (v *HistoryReapplyEventsRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -3624,21 +3624,21 @@ func (v *ReapplyEventsRequest) GetDomainUUID() (o string) {
 }
 
 // GetRequest is an internal getter (TBD...)
-func (v *ReapplyEventsRequest) GetRequest() (o *ReapplyEventsRequest) {
+func (v *HistoryReapplyEventsRequest) GetRequest() (o *ReapplyEventsRequest) {
 	if v != nil && v.Request != nil {
 		return v.Request
 	}
 	return
 }
 
-// RecordActivityTaskHeartbeatRequest is an internal type (TBD...)
-type RecordActivityTaskHeartbeatRequest struct {
+// HistoryRecordActivityTaskHeartbeatRequest is an internal type (TBD...)
+type HistoryRecordActivityTaskHeartbeatRequest struct {
 	DomainUUID       *string
 	HeartbeatRequest *RecordActivityTaskHeartbeatRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *RecordActivityTaskHeartbeatRequest) GetDomainUUID() (o string) {
+func (v *HistoryRecordActivityTaskHeartbeatRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -3646,7 +3646,7 @@ func (v *RecordActivityTaskHeartbeatRequest) GetDomainUUID() (o string) {
 }
 
 // GetHeartbeatRequest is an internal getter (TBD...)
-func (v *RecordActivityTaskHeartbeatRequest) GetHeartbeatRequest() (o *RecordActivityTaskHeartbeatRequest) {
+func (v *HistoryRecordActivityTaskHeartbeatRequest) GetHeartbeatRequest() (o *RecordActivityTaskHeartbeatRequest) {
 	if v != nil && v.HeartbeatRequest != nil {
 		return v.HeartbeatRequest
 	}
@@ -4015,14 +4015,14 @@ func (v *RecordDecisionTaskStartedResponse) GetQueries() (o map[string]*Workflow
 	return
 }
 
-// RefreshWorkflowTasksRequest is an internal type (TBD...)
-type RefreshWorkflowTasksRequest struct {
+// HistoryRefreshWorkflowTasksRequest is an internal type (TBD...)
+type HistoryRefreshWorkflowTasksRequest struct {
 	DomainUIID *string
 	Request    *RefreshWorkflowTasksRequest
 }
 
 // GetDomainUIID is an internal getter (TBD...)
-func (v *RefreshWorkflowTasksRequest) GetDomainUIID() (o string) {
+func (v *HistoryRefreshWorkflowTasksRequest) GetDomainUIID() (o string) {
 	if v != nil && v.DomainUIID != nil {
 		return *v.DomainUIID
 	}
@@ -4030,7 +4030,7 @@ func (v *RefreshWorkflowTasksRequest) GetDomainUIID() (o string) {
 }
 
 // GetRequest is an internal getter (TBD...)
-func (v *RefreshWorkflowTasksRequest) GetRequest() (o *RefreshWorkflowTasksRequest) {
+func (v *HistoryRefreshWorkflowTasksRequest) GetRequest() (o *RefreshWorkflowTasksRequest) {
 	if v != nil && v.Request != nil {
 		return v.Request
 	}
@@ -4117,8 +4117,8 @@ func (v *ReplicateEventsV2Request) GetNewRunEvents() (o *DataBlob) {
 	return
 }
 
-// RequestCancelWorkflowExecutionRequest is an internal type (TBD...)
-type RequestCancelWorkflowExecutionRequest struct {
+// HistoryRequestCancelWorkflowExecutionRequest is an internal type (TBD...)
+type HistoryRequestCancelWorkflowExecutionRequest struct {
 	DomainUUID                *string
 	CancelRequest             *RequestCancelWorkflowExecutionRequest
 	ExternalInitiatedEventID  *int64
@@ -4127,7 +4127,7 @@ type RequestCancelWorkflowExecutionRequest struct {
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *RequestCancelWorkflowExecutionRequest) GetDomainUUID() (o string) {
+func (v *HistoryRequestCancelWorkflowExecutionRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4135,7 +4135,7 @@ func (v *RequestCancelWorkflowExecutionRequest) GetDomainUUID() (o string) {
 }
 
 // GetCancelRequest is an internal getter (TBD...)
-func (v *RequestCancelWorkflowExecutionRequest) GetCancelRequest() (o *RequestCancelWorkflowExecutionRequest) {
+func (v *HistoryRequestCancelWorkflowExecutionRequest) GetCancelRequest() (o *RequestCancelWorkflowExecutionRequest) {
 	if v != nil && v.CancelRequest != nil {
 		return v.CancelRequest
 	}
@@ -4143,7 +4143,7 @@ func (v *RequestCancelWorkflowExecutionRequest) GetCancelRequest() (o *RequestCa
 }
 
 // GetExternalInitiatedEventID is an internal getter (TBD...)
-func (v *RequestCancelWorkflowExecutionRequest) GetExternalInitiatedEventID() (o int64) {
+func (v *HistoryRequestCancelWorkflowExecutionRequest) GetExternalInitiatedEventID() (o int64) {
 	if v != nil && v.ExternalInitiatedEventID != nil {
 		return *v.ExternalInitiatedEventID
 	}
@@ -4151,7 +4151,7 @@ func (v *RequestCancelWorkflowExecutionRequest) GetExternalInitiatedEventID() (o
 }
 
 // GetExternalWorkflowExecution is an internal getter (TBD...)
-func (v *RequestCancelWorkflowExecutionRequest) GetExternalWorkflowExecution() (o *WorkflowExecution) {
+func (v *HistoryRequestCancelWorkflowExecutionRequest) GetExternalWorkflowExecution() (o *WorkflowExecution) {
 	if v != nil && v.ExternalWorkflowExecution != nil {
 		return v.ExternalWorkflowExecution
 	}
@@ -4159,21 +4159,21 @@ func (v *RequestCancelWorkflowExecutionRequest) GetExternalWorkflowExecution() (
 }
 
 // GetChildWorkflowOnly is an internal getter (TBD...)
-func (v *RequestCancelWorkflowExecutionRequest) GetChildWorkflowOnly() (o bool) {
+func (v *HistoryRequestCancelWorkflowExecutionRequest) GetChildWorkflowOnly() (o bool) {
 	if v != nil && v.ChildWorkflowOnly != nil {
 		return *v.ChildWorkflowOnly
 	}
 	return
 }
 
-// ResetStickyTaskListRequest is an internal type (TBD...)
-type ResetStickyTaskListRequest struct {
+// HistoryResetStickyTaskListRequest is an internal type (TBD...)
+type HistoryResetStickyTaskListRequest struct {
 	DomainUUID *string
 	Execution  *WorkflowExecution
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *ResetStickyTaskListRequest) GetDomainUUID() (o string) {
+func (v *HistoryResetStickyTaskListRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4181,25 +4181,25 @@ func (v *ResetStickyTaskListRequest) GetDomainUUID() (o string) {
 }
 
 // GetExecution is an internal getter (TBD...)
-func (v *ResetStickyTaskListRequest) GetExecution() (o *WorkflowExecution) {
+func (v *HistoryResetStickyTaskListRequest) GetExecution() (o *WorkflowExecution) {
 	if v != nil && v.Execution != nil {
 		return v.Execution
 	}
 	return
 }
 
-// ResetStickyTaskListResponse is an internal type (TBD...)
-type ResetStickyTaskListResponse struct {
+// HistoryResetStickyTaskListResponse is an internal type (TBD...)
+type HistoryResetStickyTaskListResponse struct {
 }
 
-// ResetWorkflowExecutionRequest is an internal type (TBD...)
-type ResetWorkflowExecutionRequest struct {
+// HistoryResetWorkflowExecutionRequest is an internal type (TBD...)
+type HistoryResetWorkflowExecutionRequest struct {
 	DomainUUID   *string
 	ResetRequest *ResetWorkflowExecutionRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *ResetWorkflowExecutionRequest) GetDomainUUID() (o string) {
+func (v *HistoryResetWorkflowExecutionRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4207,21 +4207,21 @@ func (v *ResetWorkflowExecutionRequest) GetDomainUUID() (o string) {
 }
 
 // GetResetRequest is an internal getter (TBD...)
-func (v *ResetWorkflowExecutionRequest) GetResetRequest() (o *ResetWorkflowExecutionRequest) {
+func (v *HistoryResetWorkflowExecutionRequest) GetResetRequest() (o *ResetWorkflowExecutionRequest) {
 	if v != nil && v.ResetRequest != nil {
 		return v.ResetRequest
 	}
 	return
 }
 
-// RespondActivityTaskCanceledRequest is an internal type (TBD...)
-type RespondActivityTaskCanceledRequest struct {
+// HistoryRespondActivityTaskCanceledRequest is an internal type (TBD...)
+type HistoryRespondActivityTaskCanceledRequest struct {
 	DomainUUID    *string
 	CancelRequest *RespondActivityTaskCanceledRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *RespondActivityTaskCanceledRequest) GetDomainUUID() (o string) {
+func (v *HistoryRespondActivityTaskCanceledRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4229,21 +4229,21 @@ func (v *RespondActivityTaskCanceledRequest) GetDomainUUID() (o string) {
 }
 
 // GetCancelRequest is an internal getter (TBD...)
-func (v *RespondActivityTaskCanceledRequest) GetCancelRequest() (o *RespondActivityTaskCanceledRequest) {
+func (v *HistoryRespondActivityTaskCanceledRequest) GetCancelRequest() (o *RespondActivityTaskCanceledRequest) {
 	if v != nil && v.CancelRequest != nil {
 		return v.CancelRequest
 	}
 	return
 }
 
-// RespondActivityTaskCompletedRequest is an internal type (TBD...)
-type RespondActivityTaskCompletedRequest struct {
+// HistoryRespondActivityTaskCompletedRequest is an internal type (TBD...)
+type HistoryRespondActivityTaskCompletedRequest struct {
 	DomainUUID      *string
 	CompleteRequest *RespondActivityTaskCompletedRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *RespondActivityTaskCompletedRequest) GetDomainUUID() (o string) {
+func (v *HistoryRespondActivityTaskCompletedRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4251,21 +4251,21 @@ func (v *RespondActivityTaskCompletedRequest) GetDomainUUID() (o string) {
 }
 
 // GetCompleteRequest is an internal getter (TBD...)
-func (v *RespondActivityTaskCompletedRequest) GetCompleteRequest() (o *RespondActivityTaskCompletedRequest) {
+func (v *HistoryRespondActivityTaskCompletedRequest) GetCompleteRequest() (o *RespondActivityTaskCompletedRequest) {
 	if v != nil && v.CompleteRequest != nil {
 		return v.CompleteRequest
 	}
 	return
 }
 
-// RespondActivityTaskFailedRequest is an internal type (TBD...)
-type RespondActivityTaskFailedRequest struct {
+// HistoryRespondActivityTaskFailedRequest is an internal type (TBD...)
+type HistoryRespondActivityTaskFailedRequest struct {
 	DomainUUID    *string
 	FailedRequest *RespondActivityTaskFailedRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *RespondActivityTaskFailedRequest) GetDomainUUID() (o string) {
+func (v *HistoryRespondActivityTaskFailedRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4273,21 +4273,21 @@ func (v *RespondActivityTaskFailedRequest) GetDomainUUID() (o string) {
 }
 
 // GetFailedRequest is an internal getter (TBD...)
-func (v *RespondActivityTaskFailedRequest) GetFailedRequest() (o *RespondActivityTaskFailedRequest) {
+func (v *HistoryRespondActivityTaskFailedRequest) GetFailedRequest() (o *RespondActivityTaskFailedRequest) {
 	if v != nil && v.FailedRequest != nil {
 		return v.FailedRequest
 	}
 	return
 }
 
-// RespondDecisionTaskCompletedRequest is an internal type (TBD...)
-type RespondDecisionTaskCompletedRequest struct {
+// HistoryRespondDecisionTaskCompletedRequest is an internal type (TBD...)
+type HistoryRespondDecisionTaskCompletedRequest struct {
 	DomainUUID      *string
 	CompleteRequest *RespondDecisionTaskCompletedRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *RespondDecisionTaskCompletedRequest) GetDomainUUID() (o string) {
+func (v *HistoryRespondDecisionTaskCompletedRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4295,34 +4295,34 @@ func (v *RespondDecisionTaskCompletedRequest) GetDomainUUID() (o string) {
 }
 
 // GetCompleteRequest is an internal getter (TBD...)
-func (v *RespondDecisionTaskCompletedRequest) GetCompleteRequest() (o *RespondDecisionTaskCompletedRequest) {
+func (v *HistoryRespondDecisionTaskCompletedRequest) GetCompleteRequest() (o *RespondDecisionTaskCompletedRequest) {
 	if v != nil && v.CompleteRequest != nil {
 		return v.CompleteRequest
 	}
 	return
 }
 
-// RespondDecisionTaskCompletedResponse is an internal type (TBD...)
-type RespondDecisionTaskCompletedResponse struct {
+// HistoryRespondDecisionTaskCompletedResponse is an internal type (TBD...)
+type HistoryRespondDecisionTaskCompletedResponse struct {
 	StartedResponse *RecordDecisionTaskStartedResponse
 }
 
 // GetStartedResponse is an internal getter (TBD...)
-func (v *RespondDecisionTaskCompletedResponse) GetStartedResponse() (o *RecordDecisionTaskStartedResponse) {
+func (v *HistoryRespondDecisionTaskCompletedResponse) GetStartedResponse() (o *RecordDecisionTaskStartedResponse) {
 	if v != nil && v.StartedResponse != nil {
 		return v.StartedResponse
 	}
 	return
 }
 
-// RespondDecisionTaskFailedRequest is an internal type (TBD...)
-type RespondDecisionTaskFailedRequest struct {
+// HistoryRespondDecisionTaskFailedRequest is an internal type (TBD...)
+type HistoryRespondDecisionTaskFailedRequest struct {
 	DomainUUID    *string
 	FailedRequest *RespondDecisionTaskFailedRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *RespondDecisionTaskFailedRequest) GetDomainUUID() (o string) {
+func (v *HistoryRespondDecisionTaskFailedRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4330,7 +4330,7 @@ func (v *RespondDecisionTaskFailedRequest) GetDomainUUID() (o string) {
 }
 
 // GetFailedRequest is an internal getter (TBD...)
-func (v *RespondDecisionTaskFailedRequest) GetFailedRequest() (o *RespondDecisionTaskFailedRequest) {
+func (v *HistoryRespondDecisionTaskFailedRequest) GetFailedRequest() (o *RespondDecisionTaskFailedRequest) {
 	if v != nil && v.FailedRequest != nil {
 		return v.FailedRequest
 	}
@@ -4390,14 +4390,14 @@ func (v *ShardOwnershipLostError) GetOwner() (o string) {
 	return
 }
 
-// SignalWithStartWorkflowExecutionRequest is an internal type (TBD...)
-type SignalWithStartWorkflowExecutionRequest struct {
+// HistorySignalWithStartWorkflowExecutionRequest is an internal type (TBD...)
+type HistorySignalWithStartWorkflowExecutionRequest struct {
 	DomainUUID             *string
 	SignalWithStartRequest *SignalWithStartWorkflowExecutionRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *SignalWithStartWorkflowExecutionRequest) GetDomainUUID() (o string) {
+func (v *HistorySignalWithStartWorkflowExecutionRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4405,15 +4405,15 @@ func (v *SignalWithStartWorkflowExecutionRequest) GetDomainUUID() (o string) {
 }
 
 // GetSignalWithStartRequest is an internal getter (TBD...)
-func (v *SignalWithStartWorkflowExecutionRequest) GetSignalWithStartRequest() (o *SignalWithStartWorkflowExecutionRequest) {
+func (v *HistorySignalWithStartWorkflowExecutionRequest) GetSignalWithStartRequest() (o *SignalWithStartWorkflowExecutionRequest) {
 	if v != nil && v.SignalWithStartRequest != nil {
 		return v.SignalWithStartRequest
 	}
 	return
 }
 
-// SignalWorkflowExecutionRequest is an internal type (TBD...)
-type SignalWorkflowExecutionRequest struct {
+// HistorySignalWorkflowExecutionRequest is an internal type (TBD...)
+type HistorySignalWorkflowExecutionRequest struct {
 	DomainUUID                *string
 	SignalRequest             *SignalWorkflowExecutionRequest
 	ExternalWorkflowExecution *WorkflowExecution
@@ -4421,7 +4421,7 @@ type SignalWorkflowExecutionRequest struct {
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *SignalWorkflowExecutionRequest) GetDomainUUID() (o string) {
+func (v *HistorySignalWorkflowExecutionRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4429,7 +4429,7 @@ func (v *SignalWorkflowExecutionRequest) GetDomainUUID() (o string) {
 }
 
 // GetSignalRequest is an internal getter (TBD...)
-func (v *SignalWorkflowExecutionRequest) GetSignalRequest() (o *SignalWorkflowExecutionRequest) {
+func (v *HistorySignalWorkflowExecutionRequest) GetSignalRequest() (o *SignalWorkflowExecutionRequest) {
 	if v != nil && v.SignalRequest != nil {
 		return v.SignalRequest
 	}
@@ -4437,7 +4437,7 @@ func (v *SignalWorkflowExecutionRequest) GetSignalRequest() (o *SignalWorkflowEx
 }
 
 // GetExternalWorkflowExecution is an internal getter (TBD...)
-func (v *SignalWorkflowExecutionRequest) GetExternalWorkflowExecution() (o *WorkflowExecution) {
+func (v *HistorySignalWorkflowExecutionRequest) GetExternalWorkflowExecution() (o *WorkflowExecution) {
 	if v != nil && v.ExternalWorkflowExecution != nil {
 		return v.ExternalWorkflowExecution
 	}
@@ -4445,15 +4445,15 @@ func (v *SignalWorkflowExecutionRequest) GetExternalWorkflowExecution() (o *Work
 }
 
 // GetChildWorkflowOnly is an internal getter (TBD...)
-func (v *SignalWorkflowExecutionRequest) GetChildWorkflowOnly() (o bool) {
+func (v *HistorySignalWorkflowExecutionRequest) GetChildWorkflowOnly() (o bool) {
 	if v != nil && v.ChildWorkflowOnly != nil {
 		return *v.ChildWorkflowOnly
 	}
 	return
 }
 
-// StartWorkflowExecutionRequest is an internal type (TBD...)
-type StartWorkflowExecutionRequest struct {
+// HistoryStartWorkflowExecutionRequest is an internal type (TBD...)
+type HistoryStartWorkflowExecutionRequest struct {
 	DomainUUID                      *string
 	StartRequest                    *StartWorkflowExecutionRequest
 	ParentExecutionInfo             *ParentExecutionInfo
@@ -4467,7 +4467,7 @@ type StartWorkflowExecutionRequest struct {
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetDomainUUID() (o string) {
+func (v *HistoryStartWorkflowExecutionRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4475,7 +4475,7 @@ func (v *StartWorkflowExecutionRequest) GetDomainUUID() (o string) {
 }
 
 // GetStartRequest is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetStartRequest() (o *StartWorkflowExecutionRequest) {
+func (v *HistoryStartWorkflowExecutionRequest) GetStartRequest() (o *StartWorkflowExecutionRequest) {
 	if v != nil && v.StartRequest != nil {
 		return v.StartRequest
 	}
@@ -4483,7 +4483,7 @@ func (v *StartWorkflowExecutionRequest) GetStartRequest() (o *StartWorkflowExecu
 }
 
 // GetParentExecutionInfo is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetParentExecutionInfo() (o *ParentExecutionInfo) {
+func (v *HistoryStartWorkflowExecutionRequest) GetParentExecutionInfo() (o *ParentExecutionInfo) {
 	if v != nil && v.ParentExecutionInfo != nil {
 		return v.ParentExecutionInfo
 	}
@@ -4491,7 +4491,7 @@ func (v *StartWorkflowExecutionRequest) GetParentExecutionInfo() (o *ParentExecu
 }
 
 // GetAttempt is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetAttempt() (o int32) {
+func (v *HistoryStartWorkflowExecutionRequest) GetAttempt() (o int32) {
 	if v != nil && v.Attempt != nil {
 		return *v.Attempt
 	}
@@ -4499,7 +4499,7 @@ func (v *StartWorkflowExecutionRequest) GetAttempt() (o int32) {
 }
 
 // GetExpirationTimestamp is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetExpirationTimestamp() (o int64) {
+func (v *HistoryStartWorkflowExecutionRequest) GetExpirationTimestamp() (o int64) {
 	if v != nil && v.ExpirationTimestamp != nil {
 		return *v.ExpirationTimestamp
 	}
@@ -4507,7 +4507,7 @@ func (v *StartWorkflowExecutionRequest) GetExpirationTimestamp() (o int64) {
 }
 
 // GetContinueAsNewInitiator is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetContinueAsNewInitiator() (o ContinueAsNewInitiator) {
+func (v *HistoryStartWorkflowExecutionRequest) GetContinueAsNewInitiator() (o ContinueAsNewInitiator) {
 	if v != nil && v.ContinueAsNewInitiator != nil {
 		return *v.ContinueAsNewInitiator
 	}
@@ -4515,7 +4515,7 @@ func (v *StartWorkflowExecutionRequest) GetContinueAsNewInitiator() (o ContinueA
 }
 
 // GetContinuedFailureReason is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetContinuedFailureReason() (o string) {
+func (v *HistoryStartWorkflowExecutionRequest) GetContinuedFailureReason() (o string) {
 	if v != nil && v.ContinuedFailureReason != nil {
 		return *v.ContinuedFailureReason
 	}
@@ -4523,7 +4523,7 @@ func (v *StartWorkflowExecutionRequest) GetContinuedFailureReason() (o string) {
 }
 
 // GetContinuedFailureDetails is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetContinuedFailureDetails() (o []byte) {
+func (v *HistoryStartWorkflowExecutionRequest) GetContinuedFailureDetails() (o []byte) {
 	if v != nil && v.ContinuedFailureDetails != nil {
 		return v.ContinuedFailureDetails
 	}
@@ -4531,7 +4531,7 @@ func (v *StartWorkflowExecutionRequest) GetContinuedFailureDetails() (o []byte) 
 }
 
 // GetLastCompletionResult is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetLastCompletionResult() (o []byte) {
+func (v *HistoryStartWorkflowExecutionRequest) GetLastCompletionResult() (o []byte) {
 	if v != nil && v.LastCompletionResult != nil {
 		return v.LastCompletionResult
 	}
@@ -4539,7 +4539,7 @@ func (v *StartWorkflowExecutionRequest) GetLastCompletionResult() (o []byte) {
 }
 
 // GetFirstDecisionTaskBackoffSeconds is an internal getter (TBD...)
-func (v *StartWorkflowExecutionRequest) GetFirstDecisionTaskBackoffSeconds() (o int32) {
+func (v *HistoryStartWorkflowExecutionRequest) GetFirstDecisionTaskBackoffSeconds() (o int32) {
 	if v != nil && v.FirstDecisionTaskBackoffSeconds != nil {
 		return *v.FirstDecisionTaskBackoffSeconds
 	}
@@ -4716,14 +4716,14 @@ func (v *SyncShardStatusRequest) GetTimestamp() (o int64) {
 	return
 }
 
-// TerminateWorkflowExecutionRequest is an internal type (TBD...)
-type TerminateWorkflowExecutionRequest struct {
+// HistoryTerminateWorkflowExecutionRequest is an internal type (TBD...)
+type HistoryTerminateWorkflowExecutionRequest struct {
 	DomainUUID       *string
 	TerminateRequest *TerminateWorkflowExecutionRequest
 }
 
 // GetDomainUUID is an internal getter (TBD...)
-func (v *TerminateWorkflowExecutionRequest) GetDomainUUID() (o string) {
+func (v *HistoryTerminateWorkflowExecutionRequest) GetDomainUUID() (o string) {
 	if v != nil && v.DomainUUID != nil {
 		return *v.DomainUUID
 	}
@@ -4731,7 +4731,7 @@ func (v *TerminateWorkflowExecutionRequest) GetDomainUUID() (o string) {
 }
 
 // GetTerminateRequest is an internal getter (TBD...)
-func (v *TerminateWorkflowExecutionRequest) GetTerminateRequest() (o *TerminateWorkflowExecutionRequest) {
+func (v *HistoryTerminateWorkflowExecutionRequest) GetTerminateRequest() (o *TerminateWorkflowExecutionRequest) {
 	if v != nil && v.TerminateRequest != nil {
 		return v.TerminateRequest
 	}

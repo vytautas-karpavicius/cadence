@@ -70,8 +70,8 @@ func ToDescribeMutableStateResponse(t *history.DescribeMutableStateResponse) *ty
 	}
 }
 
-// FromDescribeWorkflowExecutionRequest converts internal DescribeWorkflowExecutionRequest type to thrift
-func FromDescribeWorkflowExecutionRequest(t *types.DescribeWorkflowExecutionRequest) *history.DescribeWorkflowExecutionRequest {
+// FromHistoryDescribeWorkflowExecutionRequest converts internal DescribeWorkflowExecutionRequest type to thrift
+func FromHistoryDescribeWorkflowExecutionRequest(t *types.HistoryDescribeWorkflowExecutionRequest) *history.DescribeWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
@@ -81,12 +81,12 @@ func FromDescribeWorkflowExecutionRequest(t *types.DescribeWorkflowExecutionRequ
 	}
 }
 
-// ToDescribeWorkflowExecutionRequest converts thrift DescribeWorkflowExecutionRequest type to internal
-func ToDescribeWorkflowExecutionRequest(t *history.DescribeWorkflowExecutionRequest) *types.DescribeWorkflowExecutionRequest {
+// ToHistoryDescribeWorkflowExecutionRequest converts thrift DescribeWorkflowExecutionRequest type to internal
+func ToHistoryDescribeWorkflowExecutionRequest(t *history.DescribeWorkflowExecutionRequest) *types.HistoryDescribeWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.DescribeWorkflowExecutionRequest{
+	return &types.HistoryDescribeWorkflowExecutionRequest{
 		DomainUUID: t.DomainUUID,
 		Request:    ToDescribeWorkflowExecutionRequest(t.Request),
 	}
@@ -830,7 +830,7 @@ func FromHistoryService_QueryWorkflow_Args(t *types.HistoryService_QueryWorkflow
 		return nil
 	}
 	return &history.HistoryService_QueryWorkflow_Args{
-		QueryRequest: FromQueryWorkflowRequest(t.QueryRequest),
+		QueryRequest: FromHistoryQueryWorkflowRequest(t.QueryRequest),
 	}
 }
 
@@ -840,7 +840,7 @@ func ToHistoryService_QueryWorkflow_Args(t *history.HistoryService_QueryWorkflow
 		return nil
 	}
 	return &types.HistoryService_QueryWorkflow_Args{
-		QueryRequest: ToQueryWorkflowRequest(t.QueryRequest),
+		QueryRequest: ToHistoryQueryWorkflowRequest(t.QueryRequest),
 	}
 }
 
@@ -850,7 +850,7 @@ func FromHistoryService_QueryWorkflow_Result(t *types.HistoryService_QueryWorkfl
 		return nil
 	}
 	return &history.HistoryService_QueryWorkflow_Result{
-		Success:                        FromQueryWorkflowResponse(t.Success),
+		Success:                        FromHistoryQueryWorkflowResponse(t.Success),
 		BadRequestError:                FromBadRequestError(t.BadRequestError),
 		InternalServiceError:           FromInternalServiceError(t.InternalServiceError),
 		EntityNotExistError:            FromEntityNotExistsError(t.EntityNotExistError),
@@ -867,7 +867,7 @@ func ToHistoryService_QueryWorkflow_Result(t *history.HistoryService_QueryWorkfl
 		return nil
 	}
 	return &types.HistoryService_QueryWorkflow_Result{
-		Success:                        ToQueryWorkflowResponse(t.Success),
+		Success:                        ToHistoryQueryWorkflowResponse(t.Success),
 		BadRequestError:                ToBadRequestError(t.BadRequestError),
 		InternalServiceError:           ToInternalServiceError(t.InternalServiceError),
 		EntityNotExistError:            ToEntityNotExistsError(t.EntityNotExistError),
@@ -934,7 +934,7 @@ func FromHistoryService_ReapplyEvents_Args(t *types.HistoryService_ReapplyEvents
 		return nil
 	}
 	return &history.HistoryService_ReapplyEvents_Args{
-		ReapplyEventsRequest: FromReapplyEventsRequest(t.ReapplyEventsRequest),
+		ReapplyEventsRequest: FromHistoryReapplyEventsRequest(t.ReapplyEventsRequest),
 	}
 }
 
@@ -944,7 +944,7 @@ func ToHistoryService_ReapplyEvents_Args(t *history.HistoryService_ReapplyEvents
 		return nil
 	}
 	return &types.HistoryService_ReapplyEvents_Args{
-		ReapplyEventsRequest: ToReapplyEventsRequest(t.ReapplyEventsRequest),
+		ReapplyEventsRequest: ToHistoryReapplyEventsRequest(t.ReapplyEventsRequest),
 	}
 }
 
@@ -986,7 +986,7 @@ func FromHistoryService_RecordActivityTaskHeartbeat_Args(t *types.HistoryService
 		return nil
 	}
 	return &history.HistoryService_RecordActivityTaskHeartbeat_Args{
-		HeartbeatRequest: FromRecordActivityTaskHeartbeatRequest(t.HeartbeatRequest),
+		HeartbeatRequest: FromHistoryRecordActivityTaskHeartbeatRequest(t.HeartbeatRequest),
 	}
 }
 
@@ -996,7 +996,7 @@ func ToHistoryService_RecordActivityTaskHeartbeat_Args(t *history.HistoryService
 		return nil
 	}
 	return &types.HistoryService_RecordActivityTaskHeartbeat_Args{
-		HeartbeatRequest: ToRecordActivityTaskHeartbeatRequest(t.HeartbeatRequest),
+		HeartbeatRequest: ToHistoryRecordActivityTaskHeartbeatRequest(t.HeartbeatRequest),
 	}
 }
 
@@ -1204,7 +1204,7 @@ func FromHistoryService_RefreshWorkflowTasks_Args(t *types.HistoryService_Refres
 		return nil
 	}
 	return &history.HistoryService_RefreshWorkflowTasks_Args{
-		Request: FromRefreshWorkflowTasksRequest(t.Request),
+		Request: FromHistoryRefreshWorkflowTasksRequest(t.Request),
 	}
 }
 
@@ -1214,7 +1214,7 @@ func ToHistoryService_RefreshWorkflowTasks_Args(t *history.HistoryService_Refres
 		return nil
 	}
 	return &types.HistoryService_RefreshWorkflowTasks_Args{
-		Request: ToRefreshWorkflowTasksRequest(t.Request),
+		Request: ToHistoryRefreshWorkflowTasksRequest(t.Request),
 	}
 }
 
@@ -1402,7 +1402,7 @@ func FromHistoryService_RequestCancelWorkflowExecution_Args(t *types.HistoryServ
 		return nil
 	}
 	return &history.HistoryService_RequestCancelWorkflowExecution_Args{
-		CancelRequest: FromRequestCancelWorkflowExecutionRequest(t.CancelRequest),
+		CancelRequest: FromHistoryRequestCancelWorkflowExecutionRequest(t.CancelRequest),
 	}
 }
 
@@ -1412,7 +1412,7 @@ func ToHistoryService_RequestCancelWorkflowExecution_Args(t *history.HistoryServ
 		return nil
 	}
 	return &types.HistoryService_RequestCancelWorkflowExecution_Args{
-		CancelRequest: ToRequestCancelWorkflowExecutionRequest(t.CancelRequest),
+		CancelRequest: ToHistoryRequestCancelWorkflowExecutionRequest(t.CancelRequest),
 	}
 }
 
@@ -1500,7 +1500,7 @@ func FromHistoryService_ResetStickyTaskList_Args(t *types.HistoryService_ResetSt
 		return nil
 	}
 	return &history.HistoryService_ResetStickyTaskList_Args{
-		ResetRequest: FromResetStickyTaskListRequest(t.ResetRequest),
+		ResetRequest: FromHistoryResetStickyTaskListRequest(t.ResetRequest),
 	}
 }
 
@@ -1510,7 +1510,7 @@ func ToHistoryService_ResetStickyTaskList_Args(t *history.HistoryService_ResetSt
 		return nil
 	}
 	return &types.HistoryService_ResetStickyTaskList_Args{
-		ResetRequest: ToResetStickyTaskListRequest(t.ResetRequest),
+		ResetRequest: ToHistoryResetStickyTaskListRequest(t.ResetRequest),
 	}
 }
 
@@ -1520,7 +1520,7 @@ func FromHistoryService_ResetStickyTaskList_Result(t *types.HistoryService_Reset
 		return nil
 	}
 	return &history.HistoryService_ResetStickyTaskList_Result{
-		Success:                 FromResetStickyTaskListResponse(t.Success),
+		Success:                 FromHistoryResetStickyTaskListResponse(t.Success),
 		BadRequestError:         FromBadRequestError(t.BadRequestError),
 		InternalServiceError:    FromInternalServiceError(t.InternalServiceError),
 		EntityNotExistError:     FromEntityNotExistsError(t.EntityNotExistError),
@@ -1536,7 +1536,7 @@ func ToHistoryService_ResetStickyTaskList_Result(t *history.HistoryService_Reset
 		return nil
 	}
 	return &types.HistoryService_ResetStickyTaskList_Result{
-		Success:                 ToResetStickyTaskListResponse(t.Success),
+		Success:                 ToHistoryResetStickyTaskListResponse(t.Success),
 		BadRequestError:         ToBadRequestError(t.BadRequestError),
 		InternalServiceError:    ToInternalServiceError(t.InternalServiceError),
 		EntityNotExistError:     ToEntityNotExistsError(t.EntityNotExistError),
@@ -1552,7 +1552,7 @@ func FromHistoryService_ResetWorkflowExecution_Args(t *types.HistoryService_Rese
 		return nil
 	}
 	return &history.HistoryService_ResetWorkflowExecution_Args{
-		ResetRequest: FromResetWorkflowExecutionRequest(t.ResetRequest),
+		ResetRequest: FromHistoryResetWorkflowExecutionRequest(t.ResetRequest),
 	}
 }
 
@@ -1562,7 +1562,7 @@ func ToHistoryService_ResetWorkflowExecution_Args(t *history.HistoryService_Rese
 		return nil
 	}
 	return &types.HistoryService_ResetWorkflowExecution_Args{
-		ResetRequest: ToResetWorkflowExecutionRequest(t.ResetRequest),
+		ResetRequest: ToHistoryResetWorkflowExecutionRequest(t.ResetRequest),
 	}
 }
 
@@ -1606,7 +1606,7 @@ func FromHistoryService_RespondActivityTaskCanceled_Args(t *types.HistoryService
 		return nil
 	}
 	return &history.HistoryService_RespondActivityTaskCanceled_Args{
-		CanceledRequest: FromRespondActivityTaskCanceledRequest(t.CanceledRequest),
+		CanceledRequest: FromHistoryRespondActivityTaskCanceledRequest(t.CanceledRequest),
 	}
 }
 
@@ -1616,7 +1616,7 @@ func ToHistoryService_RespondActivityTaskCanceled_Args(t *history.HistoryService
 		return nil
 	}
 	return &types.HistoryService_RespondActivityTaskCanceled_Args{
-		CanceledRequest: ToRespondActivityTaskCanceledRequest(t.CanceledRequest),
+		CanceledRequest: ToHistoryRespondActivityTaskCanceledRequest(t.CanceledRequest),
 	}
 }
 
@@ -1658,7 +1658,7 @@ func FromHistoryService_RespondActivityTaskCompleted_Args(t *types.HistoryServic
 		return nil
 	}
 	return &history.HistoryService_RespondActivityTaskCompleted_Args{
-		CompleteRequest: FromRespondActivityTaskCompletedRequest(t.CompleteRequest),
+		CompleteRequest: FromHistoryRespondActivityTaskCompletedRequest(t.CompleteRequest),
 	}
 }
 
@@ -1668,7 +1668,7 @@ func ToHistoryService_RespondActivityTaskCompleted_Args(t *history.HistoryServic
 		return nil
 	}
 	return &types.HistoryService_RespondActivityTaskCompleted_Args{
-		CompleteRequest: ToRespondActivityTaskCompletedRequest(t.CompleteRequest),
+		CompleteRequest: ToHistoryRespondActivityTaskCompletedRequest(t.CompleteRequest),
 	}
 }
 
@@ -1710,7 +1710,7 @@ func FromHistoryService_RespondActivityTaskFailed_Args(t *types.HistoryService_R
 		return nil
 	}
 	return &history.HistoryService_RespondActivityTaskFailed_Args{
-		FailRequest: FromRespondActivityTaskFailedRequest(t.FailRequest),
+		FailRequest: FromHistoryRespondActivityTaskFailedRequest(t.FailRequest),
 	}
 }
 
@@ -1720,7 +1720,7 @@ func ToHistoryService_RespondActivityTaskFailed_Args(t *history.HistoryService_R
 		return nil
 	}
 	return &types.HistoryService_RespondActivityTaskFailed_Args{
-		FailRequest: ToRespondActivityTaskFailedRequest(t.FailRequest),
+		FailRequest: ToHistoryRespondActivityTaskFailedRequest(t.FailRequest),
 	}
 }
 
@@ -1762,7 +1762,7 @@ func FromHistoryService_RespondDecisionTaskCompleted_Args(t *types.HistoryServic
 		return nil
 	}
 	return &history.HistoryService_RespondDecisionTaskCompleted_Args{
-		CompleteRequest: FromRespondDecisionTaskCompletedRequest(t.CompleteRequest),
+		CompleteRequest: FromHistoryRespondDecisionTaskCompletedRequest(t.CompleteRequest),
 	}
 }
 
@@ -1772,7 +1772,7 @@ func ToHistoryService_RespondDecisionTaskCompleted_Args(t *history.HistoryServic
 		return nil
 	}
 	return &types.HistoryService_RespondDecisionTaskCompleted_Args{
-		CompleteRequest: ToRespondDecisionTaskCompletedRequest(t.CompleteRequest),
+		CompleteRequest: ToHistoryRespondDecisionTaskCompletedRequest(t.CompleteRequest),
 	}
 }
 
@@ -1782,7 +1782,7 @@ func FromHistoryService_RespondDecisionTaskCompleted_Result(t *types.HistoryServ
 		return nil
 	}
 	return &history.HistoryService_RespondDecisionTaskCompleted_Result{
-		Success:                 FromRespondDecisionTaskCompletedResponse(t.Success),
+		Success:                 FromHistoryRespondDecisionTaskCompletedResponse(t.Success),
 		BadRequestError:         FromBadRequestError(t.BadRequestError),
 		InternalServiceError:    FromInternalServiceError(t.InternalServiceError),
 		EntityNotExistError:     FromEntityNotExistsError(t.EntityNotExistError),
@@ -1799,7 +1799,7 @@ func ToHistoryService_RespondDecisionTaskCompleted_Result(t *history.HistoryServ
 		return nil
 	}
 	return &types.HistoryService_RespondDecisionTaskCompleted_Result{
-		Success:                 ToRespondDecisionTaskCompletedResponse(t.Success),
+		Success:                 ToHistoryRespondDecisionTaskCompletedResponse(t.Success),
 		BadRequestError:         ToBadRequestError(t.BadRequestError),
 		InternalServiceError:    ToInternalServiceError(t.InternalServiceError),
 		EntityNotExistError:     ToEntityNotExistsError(t.EntityNotExistError),
@@ -1816,7 +1816,7 @@ func FromHistoryService_RespondDecisionTaskFailed_Args(t *types.HistoryService_R
 		return nil
 	}
 	return &history.HistoryService_RespondDecisionTaskFailed_Args{
-		FailedRequest: FromRespondDecisionTaskFailedRequest(t.FailedRequest),
+		FailedRequest: FromHistoryRespondDecisionTaskFailedRequest(t.FailedRequest),
 	}
 }
 
@@ -1826,7 +1826,7 @@ func ToHistoryService_RespondDecisionTaskFailed_Args(t *history.HistoryService_R
 		return nil
 	}
 	return &types.HistoryService_RespondDecisionTaskFailed_Args{
-		FailedRequest: ToRespondDecisionTaskFailedRequest(t.FailedRequest),
+		FailedRequest: ToHistoryRespondDecisionTaskFailedRequest(t.FailedRequest),
 	}
 }
 
@@ -1920,7 +1920,7 @@ func FromHistoryService_SignalWithStartWorkflowExecution_Args(t *types.HistorySe
 		return nil
 	}
 	return &history.HistoryService_SignalWithStartWorkflowExecution_Args{
-		SignalWithStartRequest: FromSignalWithStartWorkflowExecutionRequest(t.SignalWithStartRequest),
+		SignalWithStartRequest: FromHistorySignalWithStartWorkflowExecutionRequest(t.SignalWithStartRequest),
 	}
 }
 
@@ -1930,7 +1930,7 @@ func ToHistoryService_SignalWithStartWorkflowExecution_Args(t *history.HistorySe
 		return nil
 	}
 	return &types.HistoryService_SignalWithStartWorkflowExecution_Args{
-		SignalWithStartRequest: ToSignalWithStartWorkflowExecutionRequest(t.SignalWithStartRequest),
+		SignalWithStartRequest: ToHistorySignalWithStartWorkflowExecutionRequest(t.SignalWithStartRequest),
 	}
 }
 
@@ -1974,7 +1974,7 @@ func FromHistoryService_SignalWorkflowExecution_Args(t *types.HistoryService_Sig
 		return nil
 	}
 	return &history.HistoryService_SignalWorkflowExecution_Args{
-		SignalRequest: FromSignalWorkflowExecutionRequest(t.SignalRequest),
+		SignalRequest: FromHistorySignalWorkflowExecutionRequest(t.SignalRequest),
 	}
 }
 
@@ -1984,7 +1984,7 @@ func ToHistoryService_SignalWorkflowExecution_Args(t *history.HistoryService_Sig
 		return nil
 	}
 	return &types.HistoryService_SignalWorkflowExecution_Args{
-		SignalRequest: ToSignalWorkflowExecutionRequest(t.SignalRequest),
+		SignalRequest: ToHistorySignalWorkflowExecutionRequest(t.SignalRequest),
 	}
 }
 
@@ -2026,7 +2026,7 @@ func FromHistoryService_StartWorkflowExecution_Args(t *types.HistoryService_Star
 		return nil
 	}
 	return &history.HistoryService_StartWorkflowExecution_Args{
-		StartRequest: FromStartWorkflowExecutionRequest(t.StartRequest),
+		StartRequest: FromHistoryStartWorkflowExecutionRequest(t.StartRequest),
 	}
 }
 
@@ -2036,7 +2036,7 @@ func ToHistoryService_StartWorkflowExecution_Args(t *history.HistoryService_Star
 		return nil
 	}
 	return &types.HistoryService_StartWorkflowExecution_Args{
-		StartRequest: ToStartWorkflowExecutionRequest(t.StartRequest),
+		StartRequest: ToHistoryStartWorkflowExecutionRequest(t.StartRequest),
 	}
 }
 
@@ -2178,7 +2178,7 @@ func FromHistoryService_TerminateWorkflowExecution_Args(t *types.HistoryService_
 		return nil
 	}
 	return &history.HistoryService_TerminateWorkflowExecution_Args{
-		TerminateRequest: FromTerminateWorkflowExecutionRequest(t.TerminateRequest),
+		TerminateRequest: FromHistoryTerminateWorkflowExecutionRequest(t.TerminateRequest),
 	}
 }
 
@@ -2188,7 +2188,7 @@ func ToHistoryService_TerminateWorkflowExecution_Args(t *history.HistoryService_
 		return nil
 	}
 	return &types.HistoryService_TerminateWorkflowExecution_Args{
-		TerminateRequest: ToTerminateWorkflowExecutionRequest(t.TerminateRequest),
+		TerminateRequest: ToHistoryTerminateWorkflowExecutionRequest(t.TerminateRequest),
 	}
 }
 
@@ -2390,8 +2390,8 @@ func ToProcessingQueueStates(t *history.ProcessingQueueStates) *types.Processing
 	}
 }
 
-// FromQueryWorkflowRequest converts internal QueryWorkflowRequest type to thrift
-func FromQueryWorkflowRequest(t *types.QueryWorkflowRequest) *history.QueryWorkflowRequest {
+// FromHistoryQueryWorkflowRequest converts internal QueryWorkflowRequest type to thrift
+func FromHistoryQueryWorkflowRequest(t *types.HistoryQueryWorkflowRequest) *history.QueryWorkflowRequest {
 	if t == nil {
 		return nil
 	}
@@ -2401,19 +2401,19 @@ func FromQueryWorkflowRequest(t *types.QueryWorkflowRequest) *history.QueryWorkf
 	}
 }
 
-// ToQueryWorkflowRequest converts thrift QueryWorkflowRequest type to internal
-func ToQueryWorkflowRequest(t *history.QueryWorkflowRequest) *types.QueryWorkflowRequest {
+// ToHistoryQueryWorkflowRequest converts thrift QueryWorkflowRequest type to internal
+func ToHistoryQueryWorkflowRequest(t *history.QueryWorkflowRequest) *types.HistoryQueryWorkflowRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.QueryWorkflowRequest{
+	return &types.HistoryQueryWorkflowRequest{
 		DomainUUID: t.DomainUUID,
 		Request:    ToQueryWorkflowRequest(t.Request),
 	}
 }
 
-// FromQueryWorkflowResponse converts internal QueryWorkflowResponse type to thrift
-func FromQueryWorkflowResponse(t *types.QueryWorkflowResponse) *history.QueryWorkflowResponse {
+// FromHistoryQueryWorkflowResponse converts internal QueryWorkflowResponse type to thrift
+func FromHistoryQueryWorkflowResponse(t *types.HistoryQueryWorkflowResponse) *history.QueryWorkflowResponse {
 	if t == nil {
 		return nil
 	}
@@ -2422,18 +2422,18 @@ func FromQueryWorkflowResponse(t *types.QueryWorkflowResponse) *history.QueryWor
 	}
 }
 
-// ToQueryWorkflowResponse converts thrift QueryWorkflowResponse type to internal
-func ToQueryWorkflowResponse(t *history.QueryWorkflowResponse) *types.QueryWorkflowResponse {
+// ToHistoryQueryWorkflowResponse converts thrift QueryWorkflowResponse type to internal
+func ToHistoryQueryWorkflowResponse(t *history.QueryWorkflowResponse) *types.HistoryQueryWorkflowResponse {
 	if t == nil {
 		return nil
 	}
-	return &types.QueryWorkflowResponse{
+	return &types.HistoryQueryWorkflowResponse{
 		Response: ToQueryWorkflowResponse(t.Response),
 	}
 }
 
-// FromReapplyEventsRequest converts internal ReapplyEventsRequest type to thrift
-func FromReapplyEventsRequest(t *types.ReapplyEventsRequest) *history.ReapplyEventsRequest {
+// FromHistoryReapplyEventsRequest converts internal ReapplyEventsRequest type to thrift
+func FromHistoryReapplyEventsRequest(t *types.HistoryReapplyEventsRequest) *history.ReapplyEventsRequest {
 	if t == nil {
 		return nil
 	}
@@ -2443,19 +2443,19 @@ func FromReapplyEventsRequest(t *types.ReapplyEventsRequest) *history.ReapplyEve
 	}
 }
 
-// ToReapplyEventsRequest converts thrift ReapplyEventsRequest type to internal
-func ToReapplyEventsRequest(t *history.ReapplyEventsRequest) *types.ReapplyEventsRequest {
+// ToHistoryReapplyEventsRequest converts thrift ReapplyEventsRequest type to internal
+func ToHistoryReapplyEventsRequest(t *history.ReapplyEventsRequest) *types.HistoryReapplyEventsRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.ReapplyEventsRequest{
+	return &types.HistoryReapplyEventsRequest{
 		DomainUUID: t.DomainUUID,
 		Request:    ToReapplyEventsRequest(t.Request),
 	}
 }
 
-// FromRecordActivityTaskHeartbeatRequest converts internal RecordActivityTaskHeartbeatRequest type to thrift
-func FromRecordActivityTaskHeartbeatRequest(t *types.RecordActivityTaskHeartbeatRequest) *history.RecordActivityTaskHeartbeatRequest {
+// FromHistoryRecordActivityTaskHeartbeatRequest converts internal RecordActivityTaskHeartbeatRequest type to thrift
+func FromHistoryRecordActivityTaskHeartbeatRequest(t *types.HistoryRecordActivityTaskHeartbeatRequest) *history.RecordActivityTaskHeartbeatRequest {
 	if t == nil {
 		return nil
 	}
@@ -2465,12 +2465,12 @@ func FromRecordActivityTaskHeartbeatRequest(t *types.RecordActivityTaskHeartbeat
 	}
 }
 
-// ToRecordActivityTaskHeartbeatRequest converts thrift RecordActivityTaskHeartbeatRequest type to internal
-func ToRecordActivityTaskHeartbeatRequest(t *history.RecordActivityTaskHeartbeatRequest) *types.RecordActivityTaskHeartbeatRequest {
+// ToHistoryRecordActivityTaskHeartbeatRequest converts thrift RecordActivityTaskHeartbeatRequest type to internal
+func ToHistoryRecordActivityTaskHeartbeatRequest(t *history.RecordActivityTaskHeartbeatRequest) *types.HistoryRecordActivityTaskHeartbeatRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.RecordActivityTaskHeartbeatRequest{
+	return &types.HistoryRecordActivityTaskHeartbeatRequest{
 		DomainUUID:       t.DomainUUID,
 		HeartbeatRequest: ToRecordActivityTaskHeartbeatRequest(t.HeartbeatRequest),
 	}
@@ -2642,8 +2642,8 @@ func ToRecordDecisionTaskStartedResponse(t *history.RecordDecisionTaskStartedRes
 	}
 }
 
-// FromRefreshWorkflowTasksRequest converts internal RefreshWorkflowTasksRequest type to thrift
-func FromRefreshWorkflowTasksRequest(t *types.RefreshWorkflowTasksRequest) *history.RefreshWorkflowTasksRequest {
+// FromHistoryRefreshWorkflowTasksRequest converts internal RefreshWorkflowTasksRequest type to thrift
+func FromHistoryRefreshWorkflowTasksRequest(t *types.HistoryRefreshWorkflowTasksRequest) *history.RefreshWorkflowTasksRequest {
 	if t == nil {
 		return nil
 	}
@@ -2653,12 +2653,12 @@ func FromRefreshWorkflowTasksRequest(t *types.RefreshWorkflowTasksRequest) *hist
 	}
 }
 
-// ToRefreshWorkflowTasksRequest converts thrift RefreshWorkflowTasksRequest type to internal
-func ToRefreshWorkflowTasksRequest(t *history.RefreshWorkflowTasksRequest) *types.RefreshWorkflowTasksRequest {
+// ToHistoryRefreshWorkflowTasksRequest converts thrift RefreshWorkflowTasksRequest type to internal
+func ToHistoryRefreshWorkflowTasksRequest(t *history.RefreshWorkflowTasksRequest) *types.HistoryRefreshWorkflowTasksRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.RefreshWorkflowTasksRequest{
+	return &types.HistoryRefreshWorkflowTasksRequest{
 		DomainUIID: t.DomainUIID,
 		Request:    ToRefreshWorkflowTasksRequest(t.Request),
 	}
@@ -2716,8 +2716,8 @@ func ToReplicateEventsV2Request(t *history.ReplicateEventsV2Request) *types.Repl
 	}
 }
 
-// FromRequestCancelWorkflowExecutionRequest converts internal RequestCancelWorkflowExecutionRequest type to thrift
-func FromRequestCancelWorkflowExecutionRequest(t *types.RequestCancelWorkflowExecutionRequest) *history.RequestCancelWorkflowExecutionRequest {
+// FromHistoryRequestCancelWorkflowExecutionRequest converts internal RequestCancelWorkflowExecutionRequest type to thrift
+func FromHistoryRequestCancelWorkflowExecutionRequest(t *types.HistoryRequestCancelWorkflowExecutionRequest) *history.RequestCancelWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
@@ -2730,12 +2730,12 @@ func FromRequestCancelWorkflowExecutionRequest(t *types.RequestCancelWorkflowExe
 	}
 }
 
-// ToRequestCancelWorkflowExecutionRequest converts thrift RequestCancelWorkflowExecutionRequest type to internal
-func ToRequestCancelWorkflowExecutionRequest(t *history.RequestCancelWorkflowExecutionRequest) *types.RequestCancelWorkflowExecutionRequest {
+// ToHistoryRequestCancelWorkflowExecutionRequest converts thrift RequestCancelWorkflowExecutionRequest type to internal
+func ToHistoryRequestCancelWorkflowExecutionRequest(t *history.RequestCancelWorkflowExecutionRequest) *types.HistoryRequestCancelWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.RequestCancelWorkflowExecutionRequest{
+	return &types.HistoryRequestCancelWorkflowExecutionRequest{
 		DomainUUID:                t.DomainUUID,
 		CancelRequest:             ToRequestCancelWorkflowExecutionRequest(t.CancelRequest),
 		ExternalInitiatedEventID:  t.ExternalInitiatedEventId,
@@ -2744,8 +2744,8 @@ func ToRequestCancelWorkflowExecutionRequest(t *history.RequestCancelWorkflowExe
 	}
 }
 
-// FromResetStickyTaskListRequest converts internal ResetStickyTaskListRequest type to thrift
-func FromResetStickyTaskListRequest(t *types.ResetStickyTaskListRequest) *history.ResetStickyTaskListRequest {
+// FromHistoryResetStickyTaskListRequest converts internal ResetStickyTaskListRequest type to thrift
+func FromHistoryResetStickyTaskListRequest(t *types.HistoryResetStickyTaskListRequest) *history.ResetStickyTaskListRequest {
 	if t == nil {
 		return nil
 	}
@@ -2755,35 +2755,35 @@ func FromResetStickyTaskListRequest(t *types.ResetStickyTaskListRequest) *histor
 	}
 }
 
-// ToResetStickyTaskListRequest converts thrift ResetStickyTaskListRequest type to internal
-func ToResetStickyTaskListRequest(t *history.ResetStickyTaskListRequest) *types.ResetStickyTaskListRequest {
+// ToHistoryResetStickyTaskListRequest converts thrift ResetStickyTaskListRequest type to internal
+func ToHistoryResetStickyTaskListRequest(t *history.ResetStickyTaskListRequest) *types.HistoryResetStickyTaskListRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.ResetStickyTaskListRequest{
+	return &types.HistoryResetStickyTaskListRequest{
 		DomainUUID: t.DomainUUID,
 		Execution:  ToWorkflowExecution(t.Execution),
 	}
 }
 
-// FromResetStickyTaskListResponse converts internal ResetStickyTaskListResponse type to thrift
-func FromResetStickyTaskListResponse(t *types.ResetStickyTaskListResponse) *history.ResetStickyTaskListResponse {
+// FromHistoryResetStickyTaskListResponse converts internal ResetStickyTaskListResponse type to thrift
+func FromHistoryResetStickyTaskListResponse(t *types.HistoryResetStickyTaskListResponse) *history.ResetStickyTaskListResponse {
 	if t == nil {
 		return nil
 	}
 	return &history.ResetStickyTaskListResponse{}
 }
 
-// ToResetStickyTaskListResponse converts thrift ResetStickyTaskListResponse type to internal
-func ToResetStickyTaskListResponse(t *history.ResetStickyTaskListResponse) *types.ResetStickyTaskListResponse {
+// ToHistoryResetStickyTaskListResponse converts thrift ResetStickyTaskListResponse type to internal
+func ToHistoryResetStickyTaskListResponse(t *history.ResetStickyTaskListResponse) *types.HistoryResetStickyTaskListResponse {
 	if t == nil {
 		return nil
 	}
-	return &types.ResetStickyTaskListResponse{}
+	return &types.HistoryResetStickyTaskListResponse{}
 }
 
-// FromResetWorkflowExecutionRequest converts internal ResetWorkflowExecutionRequest type to thrift
-func FromResetWorkflowExecutionRequest(t *types.ResetWorkflowExecutionRequest) *history.ResetWorkflowExecutionRequest {
+// FromHistoryResetWorkflowExecutionRequest converts internal ResetWorkflowExecutionRequest type to thrift
+func FromHistoryResetWorkflowExecutionRequest(t *types.HistoryResetWorkflowExecutionRequest) *history.ResetWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
@@ -2793,19 +2793,19 @@ func FromResetWorkflowExecutionRequest(t *types.ResetWorkflowExecutionRequest) *
 	}
 }
 
-// ToResetWorkflowExecutionRequest converts thrift ResetWorkflowExecutionRequest type to internal
-func ToResetWorkflowExecutionRequest(t *history.ResetWorkflowExecutionRequest) *types.ResetWorkflowExecutionRequest {
+// ToHistoryResetWorkflowExecutionRequest converts thrift ResetWorkflowExecutionRequest type to internal
+func ToHistoryResetWorkflowExecutionRequest(t *history.ResetWorkflowExecutionRequest) *types.HistoryResetWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.ResetWorkflowExecutionRequest{
+	return &types.HistoryResetWorkflowExecutionRequest{
 		DomainUUID:   t.DomainUUID,
 		ResetRequest: ToResetWorkflowExecutionRequest(t.ResetRequest),
 	}
 }
 
-// FromRespondActivityTaskCanceledRequest converts internal RespondActivityTaskCanceledRequest type to thrift
-func FromRespondActivityTaskCanceledRequest(t *types.RespondActivityTaskCanceledRequest) *history.RespondActivityTaskCanceledRequest {
+// FromHistoryRespondActivityTaskCanceledRequest converts internal RespondActivityTaskCanceledRequest type to thrift
+func FromHistoryRespondActivityTaskCanceledRequest(t *types.HistoryRespondActivityTaskCanceledRequest) *history.RespondActivityTaskCanceledRequest {
 	if t == nil {
 		return nil
 	}
@@ -2815,19 +2815,19 @@ func FromRespondActivityTaskCanceledRequest(t *types.RespondActivityTaskCanceled
 	}
 }
 
-// ToRespondActivityTaskCanceledRequest converts thrift RespondActivityTaskCanceledRequest type to internal
-func ToRespondActivityTaskCanceledRequest(t *history.RespondActivityTaskCanceledRequest) *types.RespondActivityTaskCanceledRequest {
+// ToHistoryRespondActivityTaskCanceledRequest converts thrift RespondActivityTaskCanceledRequest type to internal
+func ToHistoryRespondActivityTaskCanceledRequest(t *history.RespondActivityTaskCanceledRequest) *types.HistoryRespondActivityTaskCanceledRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.RespondActivityTaskCanceledRequest{
+	return &types.HistoryRespondActivityTaskCanceledRequest{
 		DomainUUID:    t.DomainUUID,
 		CancelRequest: ToRespondActivityTaskCanceledRequest(t.CancelRequest),
 	}
 }
 
-// FromRespondActivityTaskCompletedRequest converts internal RespondActivityTaskCompletedRequest type to thrift
-func FromRespondActivityTaskCompletedRequest(t *types.RespondActivityTaskCompletedRequest) *history.RespondActivityTaskCompletedRequest {
+// FromHistoryRespondActivityTaskCompletedRequest converts internal RespondActivityTaskCompletedRequest type to thrift
+func FromHistoryRespondActivityTaskCompletedRequest(t *types.HistoryRespondActivityTaskCompletedRequest) *history.RespondActivityTaskCompletedRequest {
 	if t == nil {
 		return nil
 	}
@@ -2837,19 +2837,19 @@ func FromRespondActivityTaskCompletedRequest(t *types.RespondActivityTaskComplet
 	}
 }
 
-// ToRespondActivityTaskCompletedRequest converts thrift RespondActivityTaskCompletedRequest type to internal
-func ToRespondActivityTaskCompletedRequest(t *history.RespondActivityTaskCompletedRequest) *types.RespondActivityTaskCompletedRequest {
+// ToHistoryRespondActivityTaskCompletedRequest converts thrift RespondActivityTaskCompletedRequest type to internal
+func ToHistoryRespondActivityTaskCompletedRequest(t *history.RespondActivityTaskCompletedRequest) *types.HistoryRespondActivityTaskCompletedRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.RespondActivityTaskCompletedRequest{
+	return &types.HistoryRespondActivityTaskCompletedRequest{
 		DomainUUID:      t.DomainUUID,
 		CompleteRequest: ToRespondActivityTaskCompletedRequest(t.CompleteRequest),
 	}
 }
 
-// FromRespondActivityTaskFailedRequest converts internal RespondActivityTaskFailedRequest type to thrift
-func FromRespondActivityTaskFailedRequest(t *types.RespondActivityTaskFailedRequest) *history.RespondActivityTaskFailedRequest {
+// FromHistoryRespondActivityTaskFailedRequest converts internal RespondActivityTaskFailedRequest type to thrift
+func FromHistoryRespondActivityTaskFailedRequest(t *types.HistoryRespondActivityTaskFailedRequest) *history.RespondActivityTaskFailedRequest {
 	if t == nil {
 		return nil
 	}
@@ -2859,19 +2859,19 @@ func FromRespondActivityTaskFailedRequest(t *types.RespondActivityTaskFailedRequ
 	}
 }
 
-// ToRespondActivityTaskFailedRequest converts thrift RespondActivityTaskFailedRequest type to internal
-func ToRespondActivityTaskFailedRequest(t *history.RespondActivityTaskFailedRequest) *types.RespondActivityTaskFailedRequest {
+// ToHistoryRespondActivityTaskFailedRequest converts thrift RespondActivityTaskFailedRequest type to internal
+func ToHistoryRespondActivityTaskFailedRequest(t *history.RespondActivityTaskFailedRequest) *types.HistoryRespondActivityTaskFailedRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.RespondActivityTaskFailedRequest{
+	return &types.HistoryRespondActivityTaskFailedRequest{
 		DomainUUID:    t.DomainUUID,
 		FailedRequest: ToRespondActivityTaskFailedRequest(t.FailedRequest),
 	}
 }
 
-// FromRespondDecisionTaskCompletedRequest converts internal RespondDecisionTaskCompletedRequest type to thrift
-func FromRespondDecisionTaskCompletedRequest(t *types.RespondDecisionTaskCompletedRequest) *history.RespondDecisionTaskCompletedRequest {
+// FromHistoryRespondDecisionTaskCompletedRequest converts internal RespondDecisionTaskCompletedRequest type to thrift
+func FromHistoryRespondDecisionTaskCompletedRequest(t *types.HistoryRespondDecisionTaskCompletedRequest) *history.RespondDecisionTaskCompletedRequest {
 	if t == nil {
 		return nil
 	}
@@ -2881,19 +2881,19 @@ func FromRespondDecisionTaskCompletedRequest(t *types.RespondDecisionTaskComplet
 	}
 }
 
-// ToRespondDecisionTaskCompletedRequest converts thrift RespondDecisionTaskCompletedRequest type to internal
-func ToRespondDecisionTaskCompletedRequest(t *history.RespondDecisionTaskCompletedRequest) *types.RespondDecisionTaskCompletedRequest {
+// ToHistoryRespondDecisionTaskCompletedRequest converts thrift RespondDecisionTaskCompletedRequest type to internal
+func ToHistoryRespondDecisionTaskCompletedRequest(t *history.RespondDecisionTaskCompletedRequest) *types.HistoryRespondDecisionTaskCompletedRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.RespondDecisionTaskCompletedRequest{
+	return &types.HistoryRespondDecisionTaskCompletedRequest{
 		DomainUUID:      t.DomainUUID,
 		CompleteRequest: ToRespondDecisionTaskCompletedRequest(t.CompleteRequest),
 	}
 }
 
-// FromRespondDecisionTaskCompletedResponse converts internal RespondDecisionTaskCompletedResponse type to thrift
-func FromRespondDecisionTaskCompletedResponse(t *types.RespondDecisionTaskCompletedResponse) *history.RespondDecisionTaskCompletedResponse {
+// FromHistoryRespondDecisionTaskCompletedResponse converts internal RespondDecisionTaskCompletedResponse type to thrift
+func FromHistoryRespondDecisionTaskCompletedResponse(t *types.HistoryRespondDecisionTaskCompletedResponse) *history.RespondDecisionTaskCompletedResponse {
 	if t == nil {
 		return nil
 	}
@@ -2902,18 +2902,18 @@ func FromRespondDecisionTaskCompletedResponse(t *types.RespondDecisionTaskComple
 	}
 }
 
-// ToRespondDecisionTaskCompletedResponse converts thrift RespondDecisionTaskCompletedResponse type to internal
-func ToRespondDecisionTaskCompletedResponse(t *history.RespondDecisionTaskCompletedResponse) *types.RespondDecisionTaskCompletedResponse {
+// ToHistoryRespondDecisionTaskCompletedResponse converts thrift RespondDecisionTaskCompletedResponse type to internal
+func ToHistoryRespondDecisionTaskCompletedResponse(t *history.RespondDecisionTaskCompletedResponse) *types.HistoryRespondDecisionTaskCompletedResponse {
 	if t == nil {
 		return nil
 	}
-	return &types.RespondDecisionTaskCompletedResponse{
+	return &types.HistoryRespondDecisionTaskCompletedResponse{
 		StartedResponse: ToRecordDecisionTaskStartedResponse(t.StartedResponse),
 	}
 }
 
-// FromRespondDecisionTaskFailedRequest converts internal RespondDecisionTaskFailedRequest type to thrift
-func FromRespondDecisionTaskFailedRequest(t *types.RespondDecisionTaskFailedRequest) *history.RespondDecisionTaskFailedRequest {
+// FromHistoryRespondDecisionTaskFailedRequest converts internal RespondDecisionTaskFailedRequest type to thrift
+func FromHistoryRespondDecisionTaskFailedRequest(t *types.HistoryRespondDecisionTaskFailedRequest) *history.RespondDecisionTaskFailedRequest {
 	if t == nil {
 		return nil
 	}
@@ -2923,12 +2923,12 @@ func FromRespondDecisionTaskFailedRequest(t *types.RespondDecisionTaskFailedRequ
 	}
 }
 
-// ToRespondDecisionTaskFailedRequest converts thrift RespondDecisionTaskFailedRequest type to internal
-func ToRespondDecisionTaskFailedRequest(t *history.RespondDecisionTaskFailedRequest) *types.RespondDecisionTaskFailedRequest {
+// ToHistoryRespondDecisionTaskFailedRequest converts thrift RespondDecisionTaskFailedRequest type to internal
+func ToHistoryRespondDecisionTaskFailedRequest(t *history.RespondDecisionTaskFailedRequest) *types.HistoryRespondDecisionTaskFailedRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.RespondDecisionTaskFailedRequest{
+	return &types.HistoryRespondDecisionTaskFailedRequest{
 		DomainUUID:    t.DomainUUID,
 		FailedRequest: ToRespondDecisionTaskFailedRequest(t.FailedRequest),
 	}
@@ -2980,8 +2980,8 @@ func ToShardOwnershipLostError(t *history.ShardOwnershipLostError) *types.ShardO
 	}
 }
 
-// FromSignalWithStartWorkflowExecutionRequest converts internal SignalWithStartWorkflowExecutionRequest type to thrift
-func FromSignalWithStartWorkflowExecutionRequest(t *types.SignalWithStartWorkflowExecutionRequest) *history.SignalWithStartWorkflowExecutionRequest {
+// FromHistorySignalWithStartWorkflowExecutionRequest converts internal SignalWithStartWorkflowExecutionRequest type to thrift
+func FromHistorySignalWithStartWorkflowExecutionRequest(t *types.HistorySignalWithStartWorkflowExecutionRequest) *history.SignalWithStartWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
@@ -2991,19 +2991,19 @@ func FromSignalWithStartWorkflowExecutionRequest(t *types.SignalWithStartWorkflo
 	}
 }
 
-// ToSignalWithStartWorkflowExecutionRequest converts thrift SignalWithStartWorkflowExecutionRequest type to internal
-func ToSignalWithStartWorkflowExecutionRequest(t *history.SignalWithStartWorkflowExecutionRequest) *types.SignalWithStartWorkflowExecutionRequest {
+// ToHistorySignalWithStartWorkflowExecutionRequest converts thrift SignalWithStartWorkflowExecutionRequest type to internal
+func ToHistorySignalWithStartWorkflowExecutionRequest(t *history.SignalWithStartWorkflowExecutionRequest) *types.HistorySignalWithStartWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.SignalWithStartWorkflowExecutionRequest{
+	return &types.HistorySignalWithStartWorkflowExecutionRequest{
 		DomainUUID:             t.DomainUUID,
 		SignalWithStartRequest: ToSignalWithStartWorkflowExecutionRequest(t.SignalWithStartRequest),
 	}
 }
 
-// FromSignalWorkflowExecutionRequest converts internal SignalWorkflowExecutionRequest type to thrift
-func FromSignalWorkflowExecutionRequest(t *types.SignalWorkflowExecutionRequest) *history.SignalWorkflowExecutionRequest {
+// FromHistorySignalWorkflowExecutionRequest converts internal SignalWorkflowExecutionRequest type to thrift
+func FromHistorySignalWorkflowExecutionRequest(t *types.HistorySignalWorkflowExecutionRequest) *history.SignalWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
@@ -3015,12 +3015,12 @@ func FromSignalWorkflowExecutionRequest(t *types.SignalWorkflowExecutionRequest)
 	}
 }
 
-// ToSignalWorkflowExecutionRequest converts thrift SignalWorkflowExecutionRequest type to internal
-func ToSignalWorkflowExecutionRequest(t *history.SignalWorkflowExecutionRequest) *types.SignalWorkflowExecutionRequest {
+// ToHistorySignalWorkflowExecutionRequest converts thrift SignalWorkflowExecutionRequest type to internal
+func ToHistorySignalWorkflowExecutionRequest(t *history.SignalWorkflowExecutionRequest) *types.HistorySignalWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.SignalWorkflowExecutionRequest{
+	return &types.HistorySignalWorkflowExecutionRequest{
 		DomainUUID:                t.DomainUUID,
 		SignalRequest:             ToSignalWorkflowExecutionRequest(t.SignalRequest),
 		ExternalWorkflowExecution: ToWorkflowExecution(t.ExternalWorkflowExecution),
@@ -3028,8 +3028,8 @@ func ToSignalWorkflowExecutionRequest(t *history.SignalWorkflowExecutionRequest)
 	}
 }
 
-// FromStartWorkflowExecutionRequest converts internal StartWorkflowExecutionRequest type to thrift
-func FromStartWorkflowExecutionRequest(t *types.StartWorkflowExecutionRequest) *history.StartWorkflowExecutionRequest {
+// FromHistoryStartWorkflowExecutionRequest converts internal StartWorkflowExecutionRequest type to thrift
+func FromHistoryStartWorkflowExecutionRequest(t *types.HistoryStartWorkflowExecutionRequest) *history.StartWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
@@ -3047,12 +3047,12 @@ func FromStartWorkflowExecutionRequest(t *types.StartWorkflowExecutionRequest) *
 	}
 }
 
-// ToStartWorkflowExecutionRequest converts thrift StartWorkflowExecutionRequest type to internal
-func ToStartWorkflowExecutionRequest(t *history.StartWorkflowExecutionRequest) *types.StartWorkflowExecutionRequest {
+// ToHistoryStartWorkflowExecutionRequest converts thrift StartWorkflowExecutionRequest type to internal
+func ToHistoryStartWorkflowExecutionRequest(t *history.StartWorkflowExecutionRequest) *types.HistoryStartWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.StartWorkflowExecutionRequest{
+	return &types.HistoryStartWorkflowExecutionRequest{
 		DomainUUID:                      t.DomainUUID,
 		StartRequest:                    ToStartWorkflowExecutionRequest(t.StartRequest),
 		ParentExecutionInfo:             ToParentExecutionInfo(t.ParentExecutionInfo),
@@ -3138,8 +3138,8 @@ func ToSyncShardStatusRequest(t *history.SyncShardStatusRequest) *types.SyncShar
 	}
 }
 
-// FromTerminateWorkflowExecutionRequest converts internal TerminateWorkflowExecutionRequest type to thrift
-func FromTerminateWorkflowExecutionRequest(t *types.TerminateWorkflowExecutionRequest) *history.TerminateWorkflowExecutionRequest {
+// FromHistoryTerminateWorkflowExecutionRequest converts internal TerminateWorkflowExecutionRequest type to thrift
+func FromHistoryTerminateWorkflowExecutionRequest(t *types.HistoryTerminateWorkflowExecutionRequest) *history.TerminateWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
@@ -3149,12 +3149,12 @@ func FromTerminateWorkflowExecutionRequest(t *types.TerminateWorkflowExecutionRe
 	}
 }
 
-// ToTerminateWorkflowExecutionRequest converts thrift TerminateWorkflowExecutionRequest type to internal
-func ToTerminateWorkflowExecutionRequest(t *history.TerminateWorkflowExecutionRequest) *types.TerminateWorkflowExecutionRequest {
+// ToHistoryTerminateWorkflowExecutionRequest converts thrift TerminateWorkflowExecutionRequest type to internal
+func ToHistoryTerminateWorkflowExecutionRequest(t *history.TerminateWorkflowExecutionRequest) *types.HistoryTerminateWorkflowExecutionRequest {
 	if t == nil {
 		return nil
 	}
-	return &types.TerminateWorkflowExecutionRequest{
+	return &types.HistoryTerminateWorkflowExecutionRequest{
 		DomainUUID:       t.DomainUUID,
 		TerminateRequest: ToTerminateWorkflowExecutionRequest(t.TerminateRequest),
 	}

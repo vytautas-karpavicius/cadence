@@ -86,11 +86,11 @@ import (
 var structTemplate = template.Must(template.New("struct type").Funcs(funcMap).Parse(`
 // {{.Prefix}}{{internal .Name}} is an internal type (TBD...)
 type {{.Prefix}}{{internal .Name}} struct {
-{{range .Fields}}	{{internal .Name}} {{if .Type.IsMap}}map[{{.Type.MapKeyType}}]{{end}}{{if .Type.IsArray}}[]{{end}}{{if .Type.IsPointer}}*{{end}}{{internal .Type.Name}}
+{{range .Fields}}	{{internal .Name}} {{if .Type.IsMap}}map[{{.Type.MapKeyType}}]{{end}}{{if .Type.IsArray}}[]{{end}}{{if .Type.IsPointer}}*{{end}}{{.Type.Prefix}}{{internal .Type.Name}}
 {{end}}}
 {{range .Fields}}
 // Get{{internal .Name}} is an internal getter (TBD...)
-func (v *{{$.Prefix}}{{internal $.Name}}) Get{{internal .Name}}() (o {{if .Type.IsMap}}map[{{.Type.MapKeyType}}]{{end}}{{if .Type.IsArray}}[]{{end}}{{if .Type.IsPointer | and (not .Type.IsPrimitive) | and (not .Type.IsEnum)}}*{{end}}{{internal .Type.Name}}) {
+func (v *{{$.Prefix}}{{internal $.Name}}) Get{{internal .Name}}() (o {{if .Type.IsMap}}map[{{.Type.MapKeyType}}]{{end}}{{if .Type.IsArray}}[]{{end}}{{if .Type.IsPointer | and (not .Type.IsPrimitive) | and (not .Type.IsEnum)}}*{{end}}{{.Type.Prefix}}{{internal .Type.Name}}) {
 	if v != nil{{if .Type.IsMap | or .Type.IsArray | or .Type.IsPointer}} && v.{{internal .Name}} != nil{{end}} {
 		return {{if .Type.IsPointer | and (or .Type.IsPrimitive .Type.IsEnum)}}*{{end}}v.{{internal .Name}}
 	}
@@ -399,6 +399,16 @@ func main() {
 
 		for _, name := range pkg.Scope().Names() {
 			obj := pkg.Scope().Lookup(name)
+			t := newType(obj.Type())
+			if count, ok := allNames[t.Name]; ok {
+				allNames[t.Name] = count + 1
+			} else {
+				allNames[t.Name] = 1
+			}
+		}
+
+		for _, name := range pkg.Scope().Names() {
+			obj := pkg.Scope().Lookup(name)
 			if !obj.Exported() {
 				continue
 			}
@@ -412,17 +422,13 @@ func main() {
 				continue
 			}
 
-			if count, ok := allNames[t.Name]; ok {
-				if count > 1 {
-					t.Prefix = p.DuplicatePrefix
-				}
-				allNames[t.Name] = count + 1
-			} else {
-				allNames[t.Name] = 1
+			if count, ok := allNames[t.Name]; ok && count > 1 {
+				t.Prefix = p.DuplicatePrefix
 			}
 
 			if t.IsStruct {
 				for i, f := range t.Fields {
+					fmt.Println(f.Type.FullThriftPackage, " - ", p.ThriftPackage)
 					if count := allNames[f.Type.Name]; count > 1 && f.Type.FullThriftPackage == p.ThriftPackage {
 						t.Fields[i].Type.Prefix = p.DuplicatePrefix
 					}

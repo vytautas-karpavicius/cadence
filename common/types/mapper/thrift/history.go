@@ -3039,7 +3039,7 @@ func FromHistoryStartWorkflowExecutionRequest(t *types.HistoryStartWorkflowExecu
 		ParentExecutionInfo:             FromParentExecutionInfo(t.ParentExecutionInfo),
 		Attempt:                         t.Attempt,
 		ExpirationTimestamp:             t.ExpirationTimestamp,
-		ContinueAsNewInitiator:          t.ContinueAsNewInitiator,
+		ContinueAsNewInitiator:          FromContinueAsNewInitiator(t.ContinueAsNewInitiator),
 		ContinuedFailureReason:          t.ContinuedFailureReason,
 		ContinuedFailureDetails:         t.ContinuedFailureDetails,
 		LastCompletionResult:            t.LastCompletionResult,
@@ -3058,7 +3058,7 @@ func ToHistoryStartWorkflowExecutionRequest(t *history.StartWorkflowExecutionReq
 		ParentExecutionInfo:             ToParentExecutionInfo(t.ParentExecutionInfo),
 		Attempt:                         t.Attempt,
 		ExpirationTimestamp:             t.ExpirationTimestamp,
-		ContinueAsNewInitiator:          t.ContinueAsNewInitiator,
+		ContinueAsNewInitiator:          ToContinueAsNewInitiator(t.ContinueAsNewInitiator),
 		ContinuedFailureReason:          t.ContinuedFailureReason,
 		ContinuedFailureDetails:         t.ContinuedFailureDetails,
 		LastCompletionResult:            t.LastCompletionResult,
@@ -3160,30 +3160,6 @@ func ToHistoryTerminateWorkflowExecutionRequest(t *history.TerminateWorkflowExec
 	}
 }
 
-// FromFailoverMarkerTokenArray converts internal FailoverMarkerToken type array to thrift
-func FromFailoverMarkerTokenArray(t []*types.FailoverMarkerToken) []*history.FailoverMarkerToken {
-	if t == nil {
-		return nil
-	}
-	v := make([]*history.FailoverMarkerToken, len(t))
-	for i := range t {
-		v[i] = FromFailoverMarkerToken(t[i])
-	}
-	return v
-}
-
-// ToFailoverMarkerTokenArray converts thrift FailoverMarkerToken type array to internal
-func ToFailoverMarkerTokenArray(t []*history.FailoverMarkerToken) []*types.FailoverMarkerToken {
-	if t == nil {
-		return nil
-	}
-	v := make([]*types.FailoverMarkerToken, len(t))
-	for i := range t {
-		v[i] = ToFailoverMarkerToken(t[i])
-	}
-	return v
-}
-
 // FromProcessingQueueStateArray converts internal ProcessingQueueState type array to thrift
 func FromProcessingQueueStateArray(t []*types.ProcessingQueueState) []*history.ProcessingQueueState {
 	if t == nil {
@@ -3204,6 +3180,30 @@ func ToProcessingQueueStateArray(t []*history.ProcessingQueueState) []*types.Pro
 	v := make([]*types.ProcessingQueueState, len(t))
 	for i := range t {
 		v[i] = ToProcessingQueueState(t[i])
+	}
+	return v
+}
+
+// FromFailoverMarkerTokenArray converts internal FailoverMarkerToken type array to thrift
+func FromFailoverMarkerTokenArray(t []*types.FailoverMarkerToken) []*history.FailoverMarkerToken {
+	if t == nil {
+		return nil
+	}
+	v := make([]*history.FailoverMarkerToken, len(t))
+	for i := range t {
+		v[i] = FromFailoverMarkerToken(t[i])
+	}
+	return v
+}
+
+// ToFailoverMarkerTokenArray converts thrift FailoverMarkerToken type array to internal
+func ToFailoverMarkerTokenArray(t []*history.FailoverMarkerToken) []*types.FailoverMarkerToken {
+	if t == nil {
+		return nil
+	}
+	v := make([]*types.FailoverMarkerToken, len(t))
+	for i := range t {
+		v[i] = ToFailoverMarkerToken(t[i])
 	}
 	return v
 }

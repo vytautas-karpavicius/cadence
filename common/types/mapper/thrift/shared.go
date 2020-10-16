@@ -6184,6 +6184,30 @@ func ToWorkflowTypeFilter(t *shared.WorkflowTypeFilter) *types.WorkflowTypeFilte
 	}
 }
 
+// FromHistoryBranchRangeArray converts internal HistoryBranchRange type array to thrift
+func FromHistoryBranchRangeArray(t []*types.HistoryBranchRange) []*shared.HistoryBranchRange {
+	if t == nil {
+		return nil
+	}
+	v := make([]*shared.HistoryBranchRange, len(t))
+	for i := range t {
+		v[i] = FromHistoryBranchRange(t[i])
+	}
+	return v
+}
+
+// ToHistoryBranchRangeArray converts thrift HistoryBranchRange type array to internal
+func ToHistoryBranchRangeArray(t []*shared.HistoryBranchRange) []*types.HistoryBranchRange {
+	if t == nil {
+		return nil
+	}
+	v := make([]*types.HistoryBranchRange, len(t))
+	for i := range t {
+		v[i] = ToHistoryBranchRange(t[i])
+	}
+	return v
+}
+
 // FromDecisionArray converts internal Decision type array to thrift
 func FromDecisionArray(t []*types.Decision) []*shared.Decision {
 	if t == nil {
@@ -6208,26 +6232,122 @@ func ToDecisionArray(t []*shared.Decision) []*types.Decision {
 	return v
 }
 
-// FromResetPointInfoArray converts internal ResetPointInfo type array to thrift
-func FromResetPointInfoArray(t []*types.ResetPointInfo) []*shared.ResetPointInfo {
+// FromVersionHistoryItemArray converts internal VersionHistoryItem type array to thrift
+func FromVersionHistoryItemArray(t []*types.VersionHistoryItem) []*shared.VersionHistoryItem {
 	if t == nil {
 		return nil
 	}
-	v := make([]*shared.ResetPointInfo, len(t))
+	v := make([]*shared.VersionHistoryItem, len(t))
 	for i := range t {
-		v[i] = FromResetPointInfo(t[i])
+		v[i] = FromVersionHistoryItem(t[i])
 	}
 	return v
 }
 
-// ToResetPointInfoArray converts thrift ResetPointInfo type array to internal
-func ToResetPointInfoArray(t []*shared.ResetPointInfo) []*types.ResetPointInfo {
+// ToVersionHistoryItemArray converts thrift VersionHistoryItem type array to internal
+func ToVersionHistoryItemArray(t []*shared.VersionHistoryItem) []*types.VersionHistoryItem {
 	if t == nil {
 		return nil
 	}
-	v := make([]*types.ResetPointInfo, len(t))
+	v := make([]*types.VersionHistoryItem, len(t))
 	for i := range t {
-		v[i] = ToResetPointInfo(t[i])
+		v[i] = ToVersionHistoryItem(t[i])
+	}
+	return v
+}
+
+// FromClusterReplicationConfigurationArray converts internal ClusterReplicationConfiguration type array to thrift
+func FromClusterReplicationConfigurationArray(t []*types.ClusterReplicationConfiguration) []*shared.ClusterReplicationConfiguration {
+	if t == nil {
+		return nil
+	}
+	v := make([]*shared.ClusterReplicationConfiguration, len(t))
+	for i := range t {
+		v[i] = FromClusterReplicationConfiguration(t[i])
+	}
+	return v
+}
+
+// ToClusterReplicationConfigurationArray converts thrift ClusterReplicationConfiguration type array to internal
+func ToClusterReplicationConfigurationArray(t []*shared.ClusterReplicationConfiguration) []*types.ClusterReplicationConfiguration {
+	if t == nil {
+		return nil
+	}
+	v := make([]*types.ClusterReplicationConfiguration, len(t))
+	for i := range t {
+		v[i] = ToClusterReplicationConfiguration(t[i])
+	}
+	return v
+}
+
+// FromHistoryEventArray converts internal HistoryEvent type array to thrift
+func FromHistoryEventArray(t []*types.HistoryEvent) []*shared.HistoryEvent {
+	if t == nil {
+		return nil
+	}
+	v := make([]*shared.HistoryEvent, len(t))
+	for i := range t {
+		v[i] = FromHistoryEvent(t[i])
+	}
+	return v
+}
+
+// ToHistoryEventArray converts thrift HistoryEvent type array to internal
+func ToHistoryEventArray(t []*shared.HistoryEvent) []*types.HistoryEvent {
+	if t == nil {
+		return nil
+	}
+	v := make([]*types.HistoryEvent, len(t))
+	for i := range t {
+		v[i] = ToHistoryEvent(t[i])
+	}
+	return v
+}
+
+// FromDescribeDomainResponseArray converts internal DescribeDomainResponse type array to thrift
+func FromDescribeDomainResponseArray(t []*types.DescribeDomainResponse) []*shared.DescribeDomainResponse {
+	if t == nil {
+		return nil
+	}
+	v := make([]*shared.DescribeDomainResponse, len(t))
+	for i := range t {
+		v[i] = FromDescribeDomainResponse(t[i])
+	}
+	return v
+}
+
+// ToDescribeDomainResponseArray converts thrift DescribeDomainResponse type array to internal
+func ToDescribeDomainResponseArray(t []*shared.DescribeDomainResponse) []*types.DescribeDomainResponse {
+	if t == nil {
+		return nil
+	}
+	v := make([]*types.DescribeDomainResponse, len(t))
+	for i := range t {
+		v[i] = ToDescribeDomainResponse(t[i])
+	}
+	return v
+}
+
+// FromTaskListPartitionMetadataArray converts internal TaskListPartitionMetadata type array to thrift
+func FromTaskListPartitionMetadataArray(t []*types.TaskListPartitionMetadata) []*shared.TaskListPartitionMetadata {
+	if t == nil {
+		return nil
+	}
+	v := make([]*shared.TaskListPartitionMetadata, len(t))
+	for i := range t {
+		v[i] = FromTaskListPartitionMetadata(t[i])
+	}
+	return v
+}
+
+// ToTaskListPartitionMetadataArray converts thrift TaskListPartitionMetadata type array to internal
+func ToTaskListPartitionMetadataArray(t []*shared.TaskListPartitionMetadata) []*types.TaskListPartitionMetadata {
+	if t == nil {
+		return nil
+	}
+	v := make([]*types.TaskListPartitionMetadata, len(t))
+	for i := range t {
+		v[i] = ToTaskListPartitionMetadata(t[i])
 	}
 	return v
 }
@@ -6328,78 +6448,6 @@ func ToDataBlobArray(t []*shared.DataBlob) []*types.DataBlob {
 	return v
 }
 
-// FromHistoryEventArray converts internal HistoryEvent type array to thrift
-func FromHistoryEventArray(t []*types.HistoryEvent) []*shared.HistoryEvent {
-	if t == nil {
-		return nil
-	}
-	v := make([]*shared.HistoryEvent, len(t))
-	for i := range t {
-		v[i] = FromHistoryEvent(t[i])
-	}
-	return v
-}
-
-// ToHistoryEventArray converts thrift HistoryEvent type array to internal
-func ToHistoryEventArray(t []*shared.HistoryEvent) []*types.HistoryEvent {
-	if t == nil {
-		return nil
-	}
-	v := make([]*types.HistoryEvent, len(t))
-	for i := range t {
-		v[i] = ToHistoryEvent(t[i])
-	}
-	return v
-}
-
-// FromDescribeDomainResponseArray converts internal DescribeDomainResponse type array to thrift
-func FromDescribeDomainResponseArray(t []*types.DescribeDomainResponse) []*shared.DescribeDomainResponse {
-	if t == nil {
-		return nil
-	}
-	v := make([]*shared.DescribeDomainResponse, len(t))
-	for i := range t {
-		v[i] = FromDescribeDomainResponse(t[i])
-	}
-	return v
-}
-
-// ToDescribeDomainResponseArray converts thrift DescribeDomainResponse type array to internal
-func ToDescribeDomainResponseArray(t []*shared.DescribeDomainResponse) []*types.DescribeDomainResponse {
-	if t == nil {
-		return nil
-	}
-	v := make([]*types.DescribeDomainResponse, len(t))
-	for i := range t {
-		v[i] = ToDescribeDomainResponse(t[i])
-	}
-	return v
-}
-
-// FromVersionHistoryItemArray converts internal VersionHistoryItem type array to thrift
-func FromVersionHistoryItemArray(t []*types.VersionHistoryItem) []*shared.VersionHistoryItem {
-	if t == nil {
-		return nil
-	}
-	v := make([]*shared.VersionHistoryItem, len(t))
-	for i := range t {
-		v[i] = FromVersionHistoryItem(t[i])
-	}
-	return v
-}
-
-// ToVersionHistoryItemArray converts thrift VersionHistoryItem type array to internal
-func ToVersionHistoryItemArray(t []*shared.VersionHistoryItem) []*types.VersionHistoryItem {
-	if t == nil {
-		return nil
-	}
-	v := make([]*types.VersionHistoryItem, len(t))
-	for i := range t {
-		v[i] = ToVersionHistoryItem(t[i])
-	}
-	return v
-}
-
 // FromPendingActivityInfoArray converts internal PendingActivityInfo type array to thrift
 func FromPendingActivityInfoArray(t []*types.PendingActivityInfo) []*shared.PendingActivityInfo {
 	if t == nil {
@@ -6420,54 +6468,6 @@ func ToPendingActivityInfoArray(t []*shared.PendingActivityInfo) []*types.Pendin
 	v := make([]*types.PendingActivityInfo, len(t))
 	for i := range t {
 		v[i] = ToPendingActivityInfo(t[i])
-	}
-	return v
-}
-
-// FromClusterReplicationConfigurationArray converts internal ClusterReplicationConfiguration type array to thrift
-func FromClusterReplicationConfigurationArray(t []*types.ClusterReplicationConfiguration) []*shared.ClusterReplicationConfiguration {
-	if t == nil {
-		return nil
-	}
-	v := make([]*shared.ClusterReplicationConfiguration, len(t))
-	for i := range t {
-		v[i] = FromClusterReplicationConfiguration(t[i])
-	}
-	return v
-}
-
-// ToClusterReplicationConfigurationArray converts thrift ClusterReplicationConfiguration type array to internal
-func ToClusterReplicationConfigurationArray(t []*shared.ClusterReplicationConfiguration) []*types.ClusterReplicationConfiguration {
-	if t == nil {
-		return nil
-	}
-	v := make([]*types.ClusterReplicationConfiguration, len(t))
-	for i := range t {
-		v[i] = ToClusterReplicationConfiguration(t[i])
-	}
-	return v
-}
-
-// FromHistoryBranchRangeArray converts internal HistoryBranchRange type array to thrift
-func FromHistoryBranchRangeArray(t []*types.HistoryBranchRange) []*shared.HistoryBranchRange {
-	if t == nil {
-		return nil
-	}
-	v := make([]*shared.HistoryBranchRange, len(t))
-	for i := range t {
-		v[i] = FromHistoryBranchRange(t[i])
-	}
-	return v
-}
-
-// ToHistoryBranchRangeArray converts thrift HistoryBranchRange type array to internal
-func ToHistoryBranchRangeArray(t []*shared.HistoryBranchRange) []*types.HistoryBranchRange {
-	if t == nil {
-		return nil
-	}
-	v := make([]*types.HistoryBranchRange, len(t))
-	for i := range t {
-		v[i] = ToHistoryBranchRange(t[i])
 	}
 	return v
 }
@@ -6496,26 +6496,74 @@ func ToWorkflowExecutionInfoArray(t []*shared.WorkflowExecutionInfo) []*types.Wo
 	return v
 }
 
-// FromTaskListPartitionMetadataArray converts internal TaskListPartitionMetadata type array to thrift
-func FromTaskListPartitionMetadataArray(t []*types.TaskListPartitionMetadata) []*shared.TaskListPartitionMetadata {
+// FromResetPointInfoArray converts internal ResetPointInfo type array to thrift
+func FromResetPointInfoArray(t []*types.ResetPointInfo) []*shared.ResetPointInfo {
 	if t == nil {
 		return nil
 	}
-	v := make([]*shared.TaskListPartitionMetadata, len(t))
+	v := make([]*shared.ResetPointInfo, len(t))
 	for i := range t {
-		v[i] = FromTaskListPartitionMetadata(t[i])
+		v[i] = FromResetPointInfo(t[i])
 	}
 	return v
 }
 
-// ToTaskListPartitionMetadataArray converts thrift TaskListPartitionMetadata type array to internal
-func ToTaskListPartitionMetadataArray(t []*shared.TaskListPartitionMetadata) []*types.TaskListPartitionMetadata {
+// ToResetPointInfoArray converts thrift ResetPointInfo type array to internal
+func ToResetPointInfoArray(t []*shared.ResetPointInfo) []*types.ResetPointInfo {
 	if t == nil {
 		return nil
 	}
-	v := make([]*types.TaskListPartitionMetadata, len(t))
+	v := make([]*types.ResetPointInfo, len(t))
 	for i := range t {
-		v[i] = ToTaskListPartitionMetadata(t[i])
+		v[i] = ToResetPointInfo(t[i])
+	}
+	return v
+}
+
+// FromBadBinaryInfoMap converts internal BadBinaryInfo type map to thrift
+func FromBadBinaryInfoMap(t map[string]*types.BadBinaryInfo) map[string]*shared.BadBinaryInfo {
+	if t == nil {
+		return nil
+	}
+	v := make(map[string]*shared.BadBinaryInfo, len(t))
+	for key := range t {
+		v[key] = FromBadBinaryInfo(t[key])
+	}
+	return v
+}
+
+// ToBadBinaryInfoMap converts thrift BadBinaryInfo type map to internal
+func ToBadBinaryInfoMap(t map[string]*shared.BadBinaryInfo) map[string]*types.BadBinaryInfo {
+	if t == nil {
+		return nil
+	}
+	v := make(map[string]*types.BadBinaryInfo, len(t))
+	for key := range t {
+		v[key] = ToBadBinaryInfo(t[key])
+	}
+	return v
+}
+
+// FromIndexedValueTypeMap converts internal IndexedValueType type map to thrift
+func FromIndexedValueTypeMap(t map[string]types.IndexedValueType) map[string]shared.IndexedValueType {
+	if t == nil {
+		return nil
+	}
+	v := make(map[string]shared.IndexedValueType, len(t))
+	for key := range t {
+		v[key] = FromIndexedValueType(t[key])
+	}
+	return v
+}
+
+// ToIndexedValueTypeMap converts thrift IndexedValueType type map to internal
+func ToIndexedValueTypeMap(t map[string]shared.IndexedValueType) map[string]types.IndexedValueType {
+	if t == nil {
+		return nil
+	}
+	v := make(map[string]types.IndexedValueType, len(t))
+	for key := range t {
+		v[key] = ToIndexedValueType(t[key])
 	}
 	return v
 }
@@ -6588,54 +6636,6 @@ func ToActivityLocalDispatchInfoMap(t map[string]*shared.ActivityLocalDispatchIn
 	v := make(map[string]*types.ActivityLocalDispatchInfo, len(t))
 	for key := range t {
 		v[key] = ToActivityLocalDispatchInfo(t[key])
-	}
-	return v
-}
-
-// FromBadBinaryInfoMap converts internal BadBinaryInfo type map to thrift
-func FromBadBinaryInfoMap(t map[string]*types.BadBinaryInfo) map[string]*shared.BadBinaryInfo {
-	if t == nil {
-		return nil
-	}
-	v := make(map[string]*shared.BadBinaryInfo, len(t))
-	for key := range t {
-		v[key] = FromBadBinaryInfo(t[key])
-	}
-	return v
-}
-
-// ToBadBinaryInfoMap converts thrift BadBinaryInfo type map to internal
-func ToBadBinaryInfoMap(t map[string]*shared.BadBinaryInfo) map[string]*types.BadBinaryInfo {
-	if t == nil {
-		return nil
-	}
-	v := make(map[string]*types.BadBinaryInfo, len(t))
-	for key := range t {
-		v[key] = ToBadBinaryInfo(t[key])
-	}
-	return v
-}
-
-// FromIndexedValueTypeMap converts internal IndexedValueType type map to thrift
-func FromIndexedValueTypeMap(t map[string]types.IndexedValueType) map[string]shared.IndexedValueType {
-	if t == nil {
-		return nil
-	}
-	v := make(map[string]shared.IndexedValueType, len(t))
-	for key := range t {
-		v[key] = FromIndexedValueType(t[key])
-	}
-	return v
-}
-
-// ToIndexedValueTypeMap converts thrift IndexedValueType type map to internal
-func ToIndexedValueTypeMap(t map[string]shared.IndexedValueType) map[string]types.IndexedValueType {
-	if t == nil {
-		return nil
-	}
-	v := make(map[string]types.IndexedValueType, len(t))
-	for key := range t {
-		v[key] = ToIndexedValueType(t[key])
 	}
 	return v
 }

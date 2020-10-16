@@ -281,6 +281,10 @@ func newNamedType(n *types.Named) Type {
 			}
 		}
 	}
+	//TODO: fix this hack
+	if t.Name == "ContinueAsNewInitiator" {
+		t.IsPrimitive = false
+	}
 	return t
 }
 
@@ -428,7 +432,6 @@ func main() {
 
 			if t.IsStruct {
 				for i, f := range t.Fields {
-					fmt.Println(f.Type.FullThriftPackage, " - ", p.ThriftPackage)
 					if count := allNames[f.Type.Name]; count > 1 && f.Type.FullThriftPackage == p.ThriftPackage {
 						t.Fields[i].Type.Prefix = p.DuplicatePrefix
 					}

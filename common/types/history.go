@@ -4507,9 +4507,9 @@ func (v *HistoryStartWorkflowExecutionRequest) GetExpirationTimestamp() (o int64
 }
 
 // GetContinueAsNewInitiator is an internal getter (TBD...)
-func (v *HistoryStartWorkflowExecutionRequest) GetContinueAsNewInitiator() (o ContinueAsNewInitiator) {
+func (v *HistoryStartWorkflowExecutionRequest) GetContinueAsNewInitiator() (o *ContinueAsNewInitiator) {
 	if v != nil && v.ContinueAsNewInitiator != nil {
-		return *v.ContinueAsNewInitiator
+		return v.ContinueAsNewInitiator
 	}
 	return
 }

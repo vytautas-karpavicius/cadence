@@ -658,7 +658,7 @@ func (adh *adminHandlerImpl) GetDomainReplicationMessages(
 
 	return &replicator.GetDomainReplicationMessagesResponse{
 		Messages: &replicator.ReplicationMessages{
-			ReplicationTasks:       replicationTasks,
+			ReplicationTasks:       thrift.FromReplicationTaskArray(replicationTasks),
 			LastRetrievedMessageId: common.Int64Ptr(int64(lastMessageID)),
 		},
 	}, nil
@@ -755,7 +755,7 @@ func (adh *adminHandlerImpl) ReadDLQMessages(
 		request.InclusiveEndMessageID = common.Int64Ptr(common.EndMessageID)
 	}
 
-	var tasks []*replicator.ReplicationTask
+	var tasks []*types.ReplicationTask
 	var token []byte
 	var op func() error
 	switch request.GetType() {
@@ -786,7 +786,7 @@ func (adh *adminHandlerImpl) ReadDLQMessages(
 	}
 
 	return &replicator.ReadDLQMessagesResponse{
-		ReplicationTasks: tasks,
+		ReplicationTasks: thrift.FromReplicationTaskArray(tasks),
 		NextPageToken:    token,
 	}, nil
 }
